@@ -18,7 +18,7 @@ import {
   InputGroupText,
   InputGroup,
 } from "reactstrap";
-export default class AndroidChrome extends React.Component{
+export default class AndroidOpera extends React.Component{
 render(){
     return(
         <div>
@@ -28,9 +28,9 @@ render(){
                            <CardBody>
                              <Row>
                                <div className="col">
-                               <i className="fas fa-bell " />&nbsp;&nbsp;
+
                                  <span className="h5 font-weight-bold mb-0">
-                                   Chrome shop and rewstrauss.com 14.27
+                                   Opera. shop and rewstrauss.com 14.27
                            </span>
                                  <br />
                                  <span>Title</span>

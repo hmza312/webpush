@@ -3,6 +3,9 @@ import React from "react";
 import './campaigns.css';
 import { Lock, InfoSquare } from 'tabler-icons-react';
 // reactstrap components
+import WindowChrome from './Windows/chrome'
+import AndroidChrome from './Android/chrome'
+import MacChrome from './Mac/chrome'
 import {
   Button,
   Card,
@@ -21,12 +24,14 @@ import {
 } from "reactstrap";
 
 import Android from './Android/AndroidPage'
+import Mac from './Mac/macpage'
+import Window from './Windows/windowpage'
 import CompaignsHeader from "components/Headers/Compaignsheader.js";
 import { Steps, message } from 'antd';
 import { Select } from 'antd';
 import { DatePicker, Space } from 'antd';
 import ReactDOM from 'react-dom'
-import { Edit ,Bell} from 'tabler-icons-react';
+import { Edit, Bell } from 'tabler-icons-react';
 const { RangePicker } = DatePicker;
 const { Option } = Select;
 const { Step } = Steps;
@@ -395,14 +400,14 @@ class CampaignNotification extends React.Component {
     this.state = {
       current: 0,
       category: '',
-  
+
     }
   }
-  handleChange=(event) =>{
+  handleChange = (event) => {
     console.log(event.target.value)
-    this.setState({category: event.target.value});
+    this.setState({ category: event.target.value });
   }
-  
+
   render() {
 
 
@@ -694,11 +699,11 @@ class CampaignNotification extends React.Component {
                   <CardBody>
                     <Row>
                       <div className="col">
-                        
+
                         <span
-                          style={{fontSize:"18px",paddingTop:10,fontWeight:'bold'}}
+                          style={{ fontSize: "18px", paddingTop: 10, fontWeight: 'bold' }}
                         >
-                         
+
                           Preview
                             </span>
                         <button
@@ -737,14 +742,14 @@ class CampaignNotification extends React.Component {
   &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
                             </Col>
                           </Row>
-                          {this.state.category==='Android' ?
-           <Android /> :
-           this.state.category==='Window' ?
-           <Window />:
-           this.state.category==='Mac' ?
-           <Mac />:
-           null
-        }
+                          {this.state.category === 'Android' ?
+                            <Android /> :
+                            this.state.category === 'Window' ?
+                              <Window /> :
+                              this.state.category === 'Mac' ?
+                                <Mac /> :
+                                null
+                          }
                         </div>
                         <br />
                         {/* <Card className="card-stats mb-4 mb-xl-0">
@@ -775,7 +780,7 @@ class CampaignNotification extends React.Component {
                           </CardBody>
                         </Card> */}
 
-<div id='notification'></div>
+                        <div id='notification'></div>
                       </div>
 
 
@@ -806,11 +811,14 @@ class Summary extends React.Component {
     super(props);
     this.state = {
       current: 0,
-      category: 'FlashSaleCampaign',
-      option: 'Schedule'
+      category: '',
+
     }
   }
-
+  handleChange = (event) => {
+    console.log(event.target.value)
+    this.setState({ category: event.target.value });
+  }
 
 
 
@@ -827,7 +835,7 @@ class Summary extends React.Component {
           <div className="header-body">
             {/* Card stats */}
             <Row>
-              <Col lg="12" xl="4">
+              <Col lg="12" xl="5">
                 <Card className="card-stats mb-4 mb-xl-0 card">
                   <CardBody>
                     <Row>
@@ -854,19 +862,21 @@ class Summary extends React.Component {
                         <br />
                         <span className="h5 font-weight-bold mb-0"> Start (Pakistan Standard Time</span><br />
                         <span style={{ background: 'lightgrey' }} className="h5 font-weight-bold mb-0"> Immediately</span>
-
+                        <br />
+                      <br />
+                    
                       </div>
 
+                      
                     </Row>
                   </CardBody>
                 </Card>
 
-                <br />
 
 
 
               </Col>
-              <Col lg="12" xl="8">
+              <Col lg="12" xl="7">
                 <Card className="card-stats mb-0 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -883,50 +893,29 @@ class Summary extends React.Component {
                         <div >
                           {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
                           <Row>
-                            <Col lg="6" xl="3">
-                              <input type="radio" id="sendnow" name="sendnow" value="sendnow" onChange={this.onoptionChanged} onClick={this.RadioChanged} />
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Android" name="sendnow" value="Android" onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
-                            <Col lg="6" xl="3">
-                              <input type="radio" id="Schedule" name="sendnow" value="Schedule" onChange={this.onoptionChanged} onClick={this.SnowChanged} />
-  &nbsp; &nbsp;<label htmlFor="Window8">Window 8 </label>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Window" name="sendnow" value="Window" onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Window">Window </label>
                             </Col>
-                            <Col lg="6" xl="3">
-                              <input type="radio" id="Schedule" name="sendnow" value="Schedule" onChange={this.onoptionChanged} onClick={this.SnowChanged} />
-  &nbsp; &nbsp;<label htmlFor="Window10">Window 10 </label>
-                            </Col>
-                            <Col lg="6" xl="3">
-                              <input type="radio" id="Schedule" name="sendnow" value="Schedule" onChange={this.onoptionChanged} onClick={this.SnowChanged} />
+
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Mac" name="sendnow" value="Mac" onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
                             </Col>
                           </Row>
-                        </div>   <Card className="card-stats mb-4 mb-xl-0">
-                          <CardBody>
-                            <Row>
-                              <div className="col">
-
-                                <span className="h5 font-weight-bold mb-0">
-                                  Chrome shop and rewstrauss.com 2m
-                          </span>
-                                <br />
-                                <span>Title</span>
-                                <br />
-                                <span>Message</span>
-                              </div>
-                              <Col className="col-auto">
-                                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                  <i className="fas fa-chart-bar" />
-                                </div>
-                              </Col>
-                            </Row>
-                            <p className="mt-3 mb-0 text-muted text-sm">
-                              <span className="text-success mr-2">
-                                <i className="fa fa-arrow-up" />Site Setting
-                        </span>{" "}
-
-                            </p>
-                          </CardBody>
-                        </Card>
-
+                        </div>
+                        <br /> 
+                        {this.state.category === 'Android' ?
+                            <AndroidChrome /> :
+                            this.state.category === 'Window' ?
+                              <WindowChrome /> :
+                              this.state.category === 'Mac' ?
+                                <MacChrome /> :
+                                null
+                          } 
                       </div>
                       {/* </div> */}
 
@@ -949,38 +938,5 @@ class Summary extends React.Component {
       </>
     );
   }
-}  
-var androidchro;
-class Mac extends React.Component{
-  render(){
-    return(
-      <div>
-      <Select style={{ width: '100%' }} placeholder="Select Device For Preview"  >
-
-        <Option value="1">Chrome on Mac OS</Option>
-        <Option value="2">Firefox on Mac OS</Option>
-        <Option value="3">Opera on Mac OS</Option>
-        <Option value="4">Safari on Mac OS</Option>
-      </Select>
-    </div>
-  )
-  }
 }
-class Window extends React.Component{
-  render(){
-    return(
-      <div>
-      <Select style={{ width: '100%' }} placeholder="Select Device For Preview" >
 
-        <Option value="0">Chrome on Windows</Option>
-        <Option value="1">Firefox on Windows</Option>
-        <Option value="2">Opera on Windows</Option>
-        <Option value="3">Chrome on Windows 10</Option>
-        <Option value="4">Firefox on Windows 10</Option>
-        <Option value="5">Opera on Windows 10</Option>
-        <Option value="6">Edge on Windows 10</Option>
-      </Select>
-    </div>
-)
-  }
-}

@@ -18,7 +18,7 @@ import {
   InputGroupText,
   InputGroup,
 } from "reactstrap";
-export default class AndroidChrome extends React.Component{
+export default class AndroidFirefox extends React.Component{
 render(){
     return(
         <div>
@@ -28,9 +28,9 @@ render(){
                            <CardBody>
                              <Row>
                                <div className="col">
-                               <i className="fas fa-bell " />&nbsp;&nbsp;
+
                                  <span className="h5 font-weight-bold mb-0">
-                                   Chrome shop and rewstrauss.com 14.27
+                                   Firefox. shop and rewstrauss.com 14.27
                            </span>
                                  <br />
                                  <span>Title</span>
@@ -43,8 +43,7 @@ render(){
                                 </div>
                               </Col>
                             </Row>
-                            <img src={require("assets/img/theme/team-4-800x800.jpg")}
-                                    width='200px' height='150px' />
+                 
                             <p className="mt-3 mb-0 text-muted text-sm">
                               <span className="text-success mr-2">
                                 <i className="fa fa-arrow-up" />Site Setting

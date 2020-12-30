@@ -1,11 +1,10 @@
 import { Select } from 'antd';
-import AndroidChrome from './chrome'
-import AndroidFirefox from './firefox'
-import AndroidOpera from './opera'
+
+import MacChrome from './chrome'
 import React,{Component} from "react";
 const { Option } = Select;
 
-export default class Android extends React.Component{
+export default class Mac extends React.Component{
     constructor(props){
       super(props)
       this.state={
@@ -22,20 +21,17 @@ export default class Android extends React.Component{
       return(
         <div>
           <Select style={{ width: '100%' }} placeholder="Select Device For Preview" onChange={this.handleChangeANDROID} >
-  
-            <Option value="ChromeonAndroid">Chrome on Android</Option>
-            <Option value="FirefoxonAndroid">Firefox on Android</Option>
-            <Option value="OperaonAndroid">Opera on Android</Option>
+          <Option value="1">Chrome on Mac OS</Option>
+          <Option value="2">Firefox on Mac OS</Option>
+          <Option value="3">Opera on Mac OS</Option>
+          <Option value="SafarionMacOS">Safari on Mac OS</Option>
   
           </Select>
           <br/>
           <br/>
-          { this.state.androidcategory==='ChromeonAndroid' ?
-             <AndroidChrome /> :
-             this.state.androidcategory==='FirefoxonAndroid' ?
-             <AndroidFirefox />:
-             this.state.androidcategory==='OperaonAndroid' ?
-             <AndroidOpera />:
+          { this.state.androidcategory==='SafarionMacOS' ?
+             <MacChrome /> :
+            
             
              null
           }
