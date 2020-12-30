@@ -28,7 +28,7 @@ render(){
                            <CardBody>
                              <Row>
                                <div className="col">
-
+                               <i className="fas fa-opera " />&nbsp;&nbsp;
                                  <span className="h5 font-weight-bold mb-0">
                                    Opera. shop and rewstrauss.com 14.27
                            </span>

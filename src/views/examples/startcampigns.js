@@ -5,7 +5,7 @@ import { Lock, InfoSquare } from 'tabler-icons-react';
 // reactstrap components
 import WindowChrome from './Windows/chrome'
 import AndroidChrome from './Android/chrome'
-import MacChrome from './Mac/chrome'
+import MacChrome from './Mac/safari'
 import {
   Button,
   Card,
@@ -399,7 +399,7 @@ class CampaignNotification extends React.Component {
     super(props);
     this.state = {
       current: 0,
-      category: '',
+      category: 'Android',
 
     }
   }
@@ -504,197 +504,8 @@ class CampaignNotification extends React.Component {
                 </Card>
 
               </Col>
-              {/* <Col lg='12' xl='4'>
-                <Card className="card-stats mb-1 mb-xl-1">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <CardTitle
-                          tag="h3"
-                          className="text-uppercase text-mutedcard mb-0 "
-
-                        >
-                          Android
-                            </CardTitle>
-                        <br />
-
-                        <Card className="card-stats mb-4 mb-xl-0">
-                          <CardBody>
-                            <Row>
-                              <div className="col">
-
-                                <span className="h5 font-weight-bold mb-0">
-                                  Chrome shop and rewstrauss.com 14.27
-                          </span>
-                                <br />
-                                <span>Title</span>
-                                <br />
-                                <span>Message</span>
-                              </div>
-                              <Col className="col-auto">
-                                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                  <i className="fas fa-chart-bar" />
-                                </div>
-                              </Col>
-                            </Row>
-                            <p className="mt-3 mb-0 text-muted text-sm">
-                              <span className="text-success mr-2">
-                                <i className="fa fa-arrow-up" />Site Setting
-                        </span>{" "}
-
-                            </p>
-                          </CardBody>
-                        </Card>
-
-                      </div>
-                    </Row>
-                  </CardBody>
-                </Card>
-                <br />
-                <Card className="card-stats mb-1 mb-xl-1">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-
-                        <br />
-                        <span className="h5 font-weight-bold mb-0"> Mac OS
-                        </span>
-                        <Select style={{ width: '100%' }} placeholder=" Select Mac OS" >
-
-                          <Option>Light</Option>
-
-
-                        </Select>
-                        <br /><br /><br />
-                        <Card className="card-stats mb-4 mb-xl-0">
-                          <CardBody>
-                            <Row>
-                              <div className="col">
-                                <Row>
-                                  <Col lg='4' xl='4'>
-
-                                    <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                      <i className="fas fa-chart-bar" />
-                                    </div>
-                                  </Col>
-                                  <Col lg='12' xl='8'>
-
-                                    <span>Title</span>      <br />
-                                    <span className="h5 font-weight-bold mb-0">
-                                      shop and rewstrauss.com 14.27
-                          </span>
-                                    <br />
-                                    <span>Message</span>
-
-                                  </Col>
-                                </Row>
-                              </div>
-                            </Row>
-
-                          </CardBody>
-                        </Card>
-
-                      </div>
-
-                    </Row>
-
-                  </CardBody>
-                </Card>
-
-
-
-              </Col> */}
               <Col lg="12" xl="6">
-                {/* <Card className="card-stats mb-1 mb-xl-1">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <CardTitle
-                          tag="h3"
-                          className="text-uppercase text-mutedcard mb-0 "
 
-                        >
-                          Window 10
-                            </CardTitle>
-                        <br />
-
-                        <Card className="card-stats mb-4 mb-xl-0">
-                          <CardBody>
-                            <Row>
-                              <div className="col">
-                                <Row>
-                                  <Col lg='4' xl='4'>
-
-                                    <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                      <i className="fas fa-chart-bar" />
-                                    </div>
-                                  </Col>
-                                  <Col lg='12' xl='8'>
-
-                                    <span>Title</span>
-                                    <br />
-                                    <span>Message</span>
-                                    <br />
-                                    <span className="h5 font-weight-bold mb-0">
-                                      shop.rewstrauss.com via microsoft
-                          </span>
-
-                                  </Col>
-                                </Row>
-                              </div>
-
-                            </Row>
-
-                          </CardBody>
-                        </Card>
-
-                      </div>
-
-
-                    </Row>
-
-                  </CardBody>
-                </Card> */}
-                {/* <Card className="card-stats mb-1 mb-xl-1">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <CardTitle
-                          tag="h3"
-                          className="text-uppercase text-mutedcard mb-0 "
-
-                        >
-                          Window 8 and older
-                            </CardTitle>
-                        <br />
-
-                        <Card className="card-stats mb-4 mb-xl-0">
-                          <CardBody>
-                            <Row>
-                              <div className="col">
-
-                                <span className="h5 font-weight-bold mb-0">
-                                  Chrome shop and rewstrauss.com 2m
-                          </span>
-                                <br />
-                                <span>Title</span>
-                                <br />
-                                <span>Message</span>
-                              </div>
-                              <Col className="col-auto">
-                                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                  <i className="fas fa-chart-bar" />
-                                </div>
-                              </Col>
-                            </Row>
-                            <p className="mt-3 mb-0 text-muted text-sm">
-                              <span className="text-success mr-2">
-                                <i className="fa fa-arrow-up" />Site Setting
-                        </span>{" "}
-
-                            </p>
-                          </CardBody>
-                        </Card> */}
                 <Card className="card-stats mb-0 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -730,7 +541,7 @@ class CampaignNotification extends React.Component {
                           {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
                           <Row>
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Android" name="sendnow" value="Android" onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Android" name="sendnow" value="Android" checked onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
                             <Col lg="8" xl="4">
                               <input type="radio" id="Window" name="sendnow" value="Window" onChange={this.onoptionChanged} onClick={this.handleChange} />
@@ -752,33 +563,6 @@ class CampaignNotification extends React.Component {
                           }
                         </div>
                         <br />
-                        {/* <Card className="card-stats mb-4 mb-xl-0">
-                          <CardBody>
-                            <Row>
-                              <div className="col">
-
-                                <span className="h5 font-weight-bold mb-0">
-                                  Chrome shop and rewstrauss.com 2m
-                          </span>
-                                <br />
-                                <span>Title</span>
-                                <br />
-                                <span>Message</span>
-                              </div>
-                              <Col className="col-auto">
-                                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                  <i className="fas fa-chart-bar" />
-                                </div>
-                              </Col>
-                            </Row>
-                            <p className="mt-3 mb-0 text-muted text-sm">
-                              <span className="text-success mr-2">
-                                <i className="fa fa-arrow-up" />Site Setting
-                        </span>{" "}
-
-                            </p>
-                          </CardBody>
-                        </Card> */}
 
                         <div id='notification'></div>
                       </div>
@@ -811,7 +595,7 @@ class Summary extends React.Component {
     super(props);
     this.state = {
       current: 0,
-      category: '',
+      category: 'Android',
 
     }
   }
@@ -894,7 +678,7 @@ class Summary extends React.Component {
                           {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
                           <Row>
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Android" name="sendnow" value="Android" onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Android" name="sendnow" checked value="Android" onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
                             <Col lg="8" xl="4">
                               <input type="radio" id="Window" name="sendnow" value="Window" onChange={this.onoptionChanged} onClick={this.handleChange} />

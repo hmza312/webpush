@@ -1,5 +1,4 @@
 
-
 import React from "react";
 import '../../examples/campaigns.css';
 import { Bell } from 'tabler-icons-react';
@@ -21,7 +20,7 @@ import {
   InputGroup,
 } from "reactstrap";
 import ReactDOM from 'react-dom'
-export default class MacChrome extends React.Component{
+export default class MacOpera extends React.Component{
     RadioChanged() {
         const radio = (
           <div>
@@ -43,8 +42,7 @@ export default class MacChrome extends React.Component{
         )
         ReactDOM.render(enter, document.getElementById('radio'));
       }
-
-    render(){
+render(){
     return(
         <div>
          
@@ -56,7 +54,7 @@ export default class MacChrome extends React.Component{
     <Row>
         <Col lg='4' xl='1'>
 
-        <img src={require("assets/img/theme/chrome.png")}
+        <img src={require("assets/img/theme/opera.jfif")}
                                     width='30px' height='30px' style={{ margin: 0,
                                         position: 'absolute',
                                         top: '30%'}}/>

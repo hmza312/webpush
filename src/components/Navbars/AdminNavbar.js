@@ -18,6 +18,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Progress } from 'antd';
+import axiosInstance from '../../Apis/axiosapi'
 // reactstrap components
 import {
   DropdownMenu,
@@ -37,6 +38,18 @@ import {
 } from "reactstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 class AdminNavbar extends React.Component {
+  async handleLogout() {
+    try {
+        const response= await axiosInstance.logOut()
+          console.log(response);
+          if(response.status === 200){
+            window.location = `/admin/index`;
+          }
+        }
+    catch (e) {
+        console.log(e);
+    }
+  };
   render() {
     return (
       <>
@@ -96,7 +109,10 @@ class AdminNavbar extends React.Component {
                     <i className="ni ni-calendar-grid-58" />
                     <span>Documentation</span>
                   </DropdownItem>
-                 
+                  <DropdownItem to="#" tag={Link} onClick={this.logout}>
+                    <i className="ni ni-calendar-grid-58" />
+                    <span>Logout</span>
+                  </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>

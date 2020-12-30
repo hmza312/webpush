@@ -9,7 +9,7 @@ export default class Android extends React.Component{
     constructor(props){
       super(props)
       this.state={
-        androidcategory:null
+        androidcategory:'ChromeonAndroid'
       }
     } 
      handleChangeANDROID=  (value) =>{

@@ -1,11 +1,11 @@
 
-
 import React from "react";
-import '../../examples/campaigns.css';
-import { Bell } from 'tabler-icons-react';
+import { Menu, Dropdown, Button, message, Space, Tooltip } from 'antd';
+import {  DownOutlined, UserOutlined } from '@ant-design/icons';
+
 // reactstrap components
 import {
-  Button,
+  
   Card,
   CardTitle,
   CardHeader,
@@ -21,7 +21,19 @@ import {
   InputGroup,
 } from "reactstrap";
 import ReactDOM from 'react-dom'
-export default class MacChrome extends React.Component{
+const menu = (
+    <Menu >
+      <Menu.Item key="1" icon={<UserOutlined />}>
+        Disable Notification from Shop and remin.com
+      </Menu.Item>
+      <Menu.Item key="2" icon={<UserOutlined />}>
+     Notification Setting
+      </Menu.Item>
+     
+    </Menu>
+  );
+export default class MacFirefox extends React.Component{
+
     RadioChanged() {
         const radio = (
           <div>
@@ -38,13 +50,17 @@ export default class MacChrome extends React.Component{
             <div > 
                
          <div className='hov'>Close</div>
-
-         <div className='hov1'>Setting</div></div>
+         <div className='hov2'>
+         <Dropdown overlay={menu} backgroundColor='lightgrey'>
+      <Button>
+        ... <DownOutlined />
+      </Button>
+    </Dropdown></div>
+    </div>
         )
         ReactDOM.render(enter, document.getElementById('radio'));
       }
-
-    render(){
+render(){
     return(
         <div>
          
@@ -56,7 +72,7 @@ export default class MacChrome extends React.Component{
     <Row>
         <Col lg='4' xl='1'>
 
-        <img src={require("assets/img/theme/chrome.png")}
+        <img src={require("assets/img/theme/firefox.jfif")}
                                     width='30px' height='30px' style={{ margin: 0,
                                         position: 'absolute',
                                         top: '30%'}}/>

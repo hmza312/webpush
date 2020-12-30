@@ -28,7 +28,7 @@ render(){
                            <CardBody>
                              <Row>
                                <div className="col">
-
+                               <i className="fas fa-firefox " />&nbsp;&nbsp;
                                  <span className="h5 font-weight-bold mb-0">
                                    Firefox. shop and rewstrauss.com 14.27
                            </span>
@@ -39,7 +39,7 @@ render(){
                                </div>
                                <Col className="col-auto">
                                  <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                 <i className="fas fa-bell " />
+                                 <i className="fas fa-firefox " />
                                 </div>
                               </Col>
                             </Row>

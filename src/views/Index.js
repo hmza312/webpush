@@ -22,6 +22,7 @@ import classnames from "classnames";
 import Chart from "chart.js";
 // react plugin used to create charts
 import { Line, Bar } from "react-chartjs-2";
+import axiosInstance from '../Apis/axiosapi'
 // reactstrap components
 import {
   Button,
@@ -67,6 +68,21 @@ class Index extends React.Component {
         this.state.chartExample1Data === "data1" ? "data2" : "data1"
     });
   };
+  // componentDidMount(){
+      
+  //   const credentials = {email:"shahzaibm706@gmail.com", password:"shahzaib"};
+  //   await axiosInstance.login(credentials).then(res => {
+  //       if(res.status === 200){
+  //           localStorage.setItem("userInfo", JSON.stringify(res.data));
+  //           console.log("Login Credentials :",res.data);
+  //           message.loading({ content: 'Wait, Almost done...', key });
+  //       }
+  //       else  {
+  //           message.error({ content: ' try again!', key,duration:2 });
+  //           console.log('Username or Password is incorrect, try again!');
+  //       }
+  //   });
+  // }
   render() {
     return (
       <>

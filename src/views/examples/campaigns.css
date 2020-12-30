@@ -32,6 +32,39 @@ padding: 18px;
     
   
   }
+  .hov {
+    display: block;
+    width: 90px;
+    height: 40px;
+    padding: 1px;
+    border-bottom: 1px solid rgb(148, 148, 156);   
+    text-align: center; 
+   
+  }
+  
+  .hov1 {
+    display: block;
+    width: 90px;
+    height: 10px;
+    padding: 1px;
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    text-align: center; 
+
+  }
+  .hov2 {
+    display: block;
+    width: 90px;
+    height: 10px;
+    padding: 1px;
+    margin: 0;
+    position: absolute;
+    background-color: lightgray;
+    top: 60%;
+    text-align: center; 
+
+  }
 .pt-md-9{
     padding-top: 2rem !important; } 
     .pt-md-8{
