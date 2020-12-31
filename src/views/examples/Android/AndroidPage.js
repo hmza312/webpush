@@ -21,7 +21,7 @@ export default class Android extends React.Component{
     render(){
       return(
         <div>
-          <Select style={{ width: '100%' }} placeholder="Select Device For Preview" onChange={this.handleChangeANDROID} >
+          <Select style={{ width: '100%' }} placeholder="Select Device For Preview" value={this.state.androidcategory} onChange={this.handleChangeANDROID} >
   
             <Option value="ChromeonAndroid">Chrome on Android</Option>
             <Option value="FirefoxonAndroid">Firefox on Android</Option>
@@ -31,11 +31,11 @@ export default class Android extends React.Component{
           <br/>
           <br/>
           { this.state.androidcategory==='ChromeonAndroid' ?
-             <AndroidChrome /> :
+             <AndroidChrome data={this.props.data}/> :
              this.state.androidcategory==='FirefoxonAndroid' ?
-             <AndroidFirefox />:
+             <AndroidFirefox data={this.props.data}/>:
              this.state.androidcategory==='OperaonAndroid' ?
-             <AndroidOpera />:
+             <AndroidOpera data={this.props.data}/>:
             
              null
           }

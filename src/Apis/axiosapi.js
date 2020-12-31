@@ -8,9 +8,7 @@ class axiosInstance {
         return axios.post(USER_API_BASE_URL + "rest-auth/login/", credentials);
     }
     
-    getProfile() {
-        return axios.get(USER_API_BASE_URL + 'users/' + this.getUserInfo().user.pk + '/', this.getAuthHeader());
-    }
+    
     logOut() {
 
         localStorage.removeItem("userInfo");

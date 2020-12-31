@@ -62,12 +62,12 @@ render(){
         </Col>   &nbsp;   &nbsp;
         <Col lg='12' xl='7'>
 
-          <span style={{fontSize:18}}>Title</span>      <br />
+          <span style={{fontSize:18}}>{this.props.data.title}</span>      <br />
           <span className="h5 font-weight-bold mb-0">
             shop and rewstrauss.com 
 </span>
           <br />
-          <span style={{fontWeight:10,fontFamily:'Ariel'}}>Message</span>
+          <span style={{fontWeight:10,fontFamily:'Ariel'}}>{this.props.data.message}</span>
 
         </Col>
         <Col lg='4' xl='3' >

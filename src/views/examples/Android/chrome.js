@@ -30,21 +30,23 @@ render(){
                                <div className="col">
                                <i className="fas fa-bell " />&nbsp;&nbsp;
                                  <span className="h5 font-weight-bold mb-0">
-                                   Chrome shop and rewstrauss.com 14.27
+                                   Chrome shop and rewstrauss.com 
                            </span>
                                  <br />
-                                 <span>Title</span>
+                                 <span>{this.props.data.title}</span>
                                  <br />
-                                 <span>Message</span>
+                                 <span>{this.props.data.message}</span>
                                </div>
                                <Col className="col-auto">
-                                 <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                 <i className="fas fa-bell " />
-                                </div>
+                                 
+                                   <img src={this.props.data.logo}
+                                    width='30px' height='30px' />
+                             
                               </Col>
                             </Row>
-                            <img src={require("assets/img/theme/team-4-800x800.jpg")}
-                                    width='200px' height='150px' />
+                            {this.props.data.banner==null?
+                                 <div></div>:<img src={this.props.data.banner}
+                                    width='200px' height='150px' />}
                             <p className="mt-3 mb-0 text-muted text-sm">
                               <span className="text-success mr-2">
                                 <i className="fa fa-arrow-up" />Site Setting

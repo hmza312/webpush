@@ -12,7 +12,7 @@ export default class Window extends React.Component {
     constructor(props){
       super(props)
       this.state={
-        androidcategory:null
+        androidcategory:'ChromeonWindows'
       }
     } 
      handleChangeANDROID=  (value) =>{
@@ -26,7 +26,7 @@ export default class Window extends React.Component {
       return (
        
                 <div>
-                  <Select style={{ width: '100%' }} placeholder="Select Device For Preview" onChange={this.handleChangeANDROID}  >
+                  <Select style={{ width: '100%' }} placeholder="Select Device For Preview" value={this.state.androidcategory}onChange={this.handleChangeANDROID}  >
           
                     <Option value="ChromeonWindows">Chrome on Windows</Option>
                     <Option value="FirefoxonWindows">Firefox on Windows</Option>
@@ -39,19 +39,19 @@ export default class Window extends React.Component {
                   <br/>
           <br/>
           { this.state.androidcategory==='ChromeonWindows' ?
-             <WindowChrome /> :
+             <WindowChrome data={this.props.data}/> :
              this.state.androidcategory==='FirefoxonWindows' ?
-             <Firefox /> :
+             <Firefox data={this.props.data}/> :
              this.state.androidcategory==='FirefoxonWindows10' ?
-             <Firefox /> :
+             <Firefox data={this.props.data}/> :
              this.state.androidcategory==='EdgeonWindows10' ?
-             <Edge />:
+             <Edge data={this.props.data}/>:
              this.state.androidcategory==='OperaonWindows' ?
-             <WindowOpera />:
+             <WindowOpera data={this.props.data}/>:
              this.state.androidcategory==='ChromeonWindows10' ?
-             <WindowChrome10   />:
+             <WindowChrome10   data={this.props.data}/>:
              this.state.androidcategory==='OperaonWindows10' ?
-             <WindowOpera10   />:
+             <WindowOpera10   data={this.props.data}/>:
              null
           }
   

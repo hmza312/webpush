@@ -11,7 +11,7 @@ export default class Mac extends React.Component{
     constructor(props){
       super(props)
       this.state={
-        androidcategory:null
+        androidcategory:'ChromeonMacOS'
       }
     } 
      handleChangeANDROID=  (value) =>{
@@ -23,7 +23,7 @@ export default class Mac extends React.Component{
     render(){
       return(
         <div>
-          <Select style={{ width: '100%' }} placeholder="Select Device For Preview" onChange={this.handleChangeANDROID} >
+          <Select style={{ width: '100%' }} placeholder="Select Device For Preview" value={this.state.androidcategory} onChange={this.handleChangeANDROID} >
           <Option value="ChromeonMacOS">Chrome on Mac OS</Option>
           <Option value="FirefoxonMacOS">Firefox on Mac OS</Option>
           <Option value="OperaonMacOS">Opera on Mac OS</Option>
@@ -33,13 +33,13 @@ export default class Mac extends React.Component{
           <br/>
           <br/>
           { this.state.androidcategory==='SafarionMacOS' ?
-             <MacSafari /> :
+             <MacSafari data={this.props.data}/> :
              this.state.androidcategory==='ChromeonMacOS' ?
-             <MacChrome /> :
+             <MacChrome data={this.props.data}/> :
              this.state.androidcategory==='FirefoxonMacOS' ?
-             <MacFirefox /> :
+             <MacFirefox data={this.props.data}/> :
              this.state.androidcategory==='OperaonMacOS' ?
-             <MacOpera /> :
+             <MacOpera data={this.props.data}/> :
             
             
              null

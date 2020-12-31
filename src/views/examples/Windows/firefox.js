@@ -30,25 +30,25 @@ export default class Firefox extends React.Component {
                             <div className="col">
 
                                 <span className="h5 font-weight-bold mb-0">
-                                    Notification Title     </span>
+                                  {this.props.data.title}    </span>
                                 <br />
                                 <Row>
                                     <Col lg='4' xl='2'>
 
-                                        <img src={require("assets/img/theme/bell.png")}
-                                            width='30px' height='30px' style={{
+                                        <img src={this.props.data.logo}   
+                                            width='60px' height='60px' style={{
                                                 margin: 0,
                                                 position: 'absolute',
-                                                top: '30%'
+                                                top: '10%'
                                             }} />
 
                                     </Col>
 
-                                    <Col lg='12' xl='10'>
+                                   <Col lg='12' xl='10'>
 
 
 
-                                        <span>Message</span>
+                                        <span>&nbsp;&nbsp; {this.props.data.message}   </span>
                                     </Col>
                                 </Row>
                             </div>
@@ -63,7 +63,7 @@ export default class Firefox extends React.Component {
                             <Col xl='2'></Col>
                             <Col xl='10'><p className="mt-3 mb-0 text-muted text-sm">
                                 <span className="text-success mr-2">
-                                    Via shop and rem.com
+                                &nbsp;   Via shop and rem.com
                         </span>
                         <i className="fas fa-cog " style={{float:'right'}}/>
                             </p></Col>

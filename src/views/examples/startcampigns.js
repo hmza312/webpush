@@ -400,18 +400,41 @@ class CampaignNotification extends React.Component {
     this.state = {
       current: 0,
       category: 'Android',
-
+      title:'Enter a Cachy Title',
+      message:'Enter a Optional Message',
+      banner:null,
+logo:"https://previews.123rf.com/images/alekseyvanin/alekseyvanin1705/alekseyvanin170501038/77839919-ringing-bell-icon-vector-alarm-solid-logo-illustration-colorful-pictogram-isolated-on-white.jpg",
+url:''
     }
   }
   handleChange = (event) => {
     console.log(event.target.value)
     this.setState({ category: event.target.value });
+
   }
 
+uploadbanner=(event)=>{
+  console.log(event.target.files[0]);
+  this.setState({
+      banner:URL.createObjectURL(event.target.files[0])
+  })
+  console.log("logo",this.state.banner)
+}
+uploadlogo=(event)=>{
+  console.log(event.target.files[0]);
+  this.setState({
+      logo:URL.createObjectURL(event.target.files[0])
+  })
+  console.log("logo",this.state.logo)
+}
   render() {
 
 
-
+ var data={
+      title:this.state.title,
+      message:this.state.message,
+      banner:this.state.banner,
+      logo:this.state.logo}
 
     return (
       <>
@@ -434,13 +457,13 @@ class CampaignNotification extends React.Component {
                                 <i className="ni ni-email-83" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Enter a Cachy Title" type="text" />
+                            <Input placeholder="Enter a Cachy Title" type="text" name='title' onChange={(e)=> this.setState({title:e.target.value})}/>
                           </InputGroup>
                         </FormGroup>
                         <label>Message *</label>
                         <FormGroup className="mb-3">
 
-                          <Input placeholder="Enter a Optional Title" type="textarea" />
+                          <Input placeholder="Enter a Optional Title" type="textarea" name='message' onChange={(e)=> this.setState({message:e.target.value})}/>
 
                         </FormGroup>
                         <label>Should Be less then 500 charaters</label>   </div>
@@ -450,7 +473,7 @@ class CampaignNotification extends React.Component {
                     <label>Primary Link *</label>
                     <FormGroup className="mb-3">
 
-                      <Input placeholder="Enter Destinational URL" type="text" />
+                      <Input placeholder="Enter Destinational URL" type="text" name='url' onChange={(e)=> this.setState({url:e.target.value})}/>
 
                     </FormGroup>
                     <label>Desktop Home Page</label>  <br />
@@ -492,13 +515,13 @@ class CampaignNotification extends React.Component {
                     <label>Banner Image</label>
 
                     <br />
-                    <Input placeholder="Choose Banner Image" type="file" />
+                    <Input placeholder="Choose Banner Image" type="file" name='banner' onChange={this.uploadbanner}/>
 
                     <br />
                     <label>Logo</label>
 
                     <br />
-                    <Input placeholder="Choose Logo" type="file" />
+                    <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/>
 
                   </CardBody>
                 </Card>
@@ -541,24 +564,25 @@ class CampaignNotification extends React.Component {
                           {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
                           <Row>
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Android" name="sendnow" value="Android" checked onClick={this.handleChange} />
+                              <input type="radio" id="Android" name="sendnow" value="Android"   checked={this.state.category === "Android"} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Window" name="sendnow" value="Window" onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"} onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Window">Window </label>
                             </Col>
 
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Mac" name="sendnow" value="Mac" onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Mac" name="sendnow" value="Mac"  checked={this.state.category === "Mac"} onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
                             </Col>
                           </Row>
                           {this.state.category === 'Android' ?
-                            <Android /> :
+                            <Android data={data}
+                              /> :
                             this.state.category === 'Window' ?
-                              <Window /> :
+                              <Window data={data}/> :
                               this.state.category === 'Mac' ?
-                                <Mac /> :
+                                <Mac data={data}/> :
                                 null
                           }
                         </div>
