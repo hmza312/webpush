@@ -30,7 +30,7 @@ render(){
   <Row>
     <div className="col">
       <Row>
-        <Col lg='4' xl='1'>
+        <Col lg='1' xl='1'>
 
         <img src={require("assets/img/theme/safari.jpg")}
                                     width='30px' height='30px' style={{ margin: 0,
@@ -39,7 +39,7 @@ render(){
           
         </Col>
         &nbsp;&nbsp;
-        <Col lg='12' xl='10'>
+        <Col lg='10' xl='10'>
 
           <span style={{fontSize:18}}>{this.props.data.title}</span>      <br />
           <span className="h5 font-weight-bold mb-0">

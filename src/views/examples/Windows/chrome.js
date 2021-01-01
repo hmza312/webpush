@@ -36,13 +36,13 @@ render(){
                          
                                  <br />
                                  <Row>
-                                 <Col xl='10'>
+                                 <Col xl='10' lg='10' md='10'>
                                  <span>{this.props.data.title}</span>
                                  <br />
                                  <span>{this.props.data.message}</span></Col>
-                                 &nbsp;&nbsp;  &nbsp;{'    '}
+                                 &nbsp;&nbsp;  &nbsp;
                              
-                                 <Col className="col-auto" xl='1'>
+                                 <Col className="col-auto" xl='1' lg='1'>
                                  
                                  <img src={this.props.data.logo}
                                   width='40px' height='40px' />

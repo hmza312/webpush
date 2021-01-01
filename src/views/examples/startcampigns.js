@@ -6,8 +6,11 @@ import { Lock, InfoSquare } from 'tabler-icons-react';
 import WindowChrome from './Windows/chrome'
 import AndroidChrome from './Android/chrome'
 import MacChrome from './Mac/safari'
+import { Upload,Button } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+
 import {
-  Button,
+ 
   Card,
   CardTitle,
   CardHeader,
@@ -105,20 +108,22 @@ class StartCampaign extends React.Component {
                       }</div>
                     <br />
 
-                    <div className="steps-action">
-                      {this.state.current < steps.length - 1 && (
-                        <Button type="primary" onClick={this.next}>
-                          Continue
+                    <div className="steps-action" style={{float:'right'}}>
+                     
+                     
+                      {this.state.current > 0 && (
+                        <Button style={{ margin: '0 8px' }} onClick={this.prev}>
+                          Previous
                         </Button>
                       )}
-                      {this.state.current === steps.length - 1 && (
+                       {this.state.current === steps.length - 1 && (
                         <Button type="primary" onClick={() => message.success('Processing complete!')}>
                           Send
                         </Button>
                       )}
-                      {this.state.current > 0 && (
-                        <Button style={{ margin: '0 8px' }} onClick={this.prev}>
-                          Previous
+                       {this.state.current < steps.length - 1 && (
+                        <Button type="primary" onClick={this.next}>
+                          Continue
                         </Button>
                       )}
                     </div>
@@ -153,6 +158,40 @@ function onOk(value) {
 var category = 'RegularCampaign';
 var option = 'sendnow';
 var show;
+class Regular extends React.Component{
+  render(){
+    return(
+      <div>
+          <h5>select date to Schedule</h5>
+          <Space direction="vertical" size={12}>
+            <DatePicker showTime onChange={onChange} onOk={onOk} />
+
+          </Space>
+        </div>
+
+    )
+  }
+}
+class Flash extends React.Component{
+  render(){
+    return(
+      <div>
+      <h5>select date to Schedule</h5>
+      <Space direction="vertical" size={12}>
+        <DatePicker showTime onChange={onChange} onOk={onOk} />
+
+      </Space>
+      <h5>select Expiry date to Schedule</h5>
+      <Space direction="vertical" size={12}>
+        <DatePicker showTime onChange={onChange} onOk={onOk} />
+
+      </Space>
+    </div>
+ 
+
+    )
+  }
+}
 class CampaignDetails extends React.Component {
 
   constructor(props) {
@@ -200,12 +239,20 @@ class CampaignDetails extends React.Component {
         </div>
       )
     }
+    if (category === 'RegularCampaign' && option === 'sendnow') {
+      show = (
+        <div>
+         
+        </div>
+      )
+    }
 
     ReactDOM.render(show, document.getElementById('radio'));
   }
   onRadioChanged = (e) => {
     console.log('e.target', e.target.value)
     category = e.target.value;
+  
     this.setState({
       toggle: this.state.toggle
     });
@@ -253,12 +300,12 @@ class CampaignDetails extends React.Component {
                           {/* onChange={category=> this.setState({category})} */}
                           <Col lg="12" xl="6">
                             <input type="radio" id="Category" name="Category"
-                              value="RegularCampaign" onChange={this.onRadioChanged} onClick={this.SnowChanged} />
+                              value="RegularCampaign" onClick={this.onRadioChanged} checked={category === "RegularCampaign"}   />
   &nbsp; &nbsp;
   <label htmlFor="RegularCampaign">Regular Campaign</label></Col>
                           <Col lg="12" xl="6">
-                            <input type="radio" id="Category" name="Category"
-                              value="FlashSaleCampaign" onChange={this.onRadioChanged} onClick={this.SnowChanged} />
+                            <input type="radio" id="Category" name="Category"checked={category === "FlashSaleCampaign"} 
+                              value="FlashSaleCampaign" onClick={this.onRadioChanged} />
   &nbsp; &nbsp;
   <label htmlFor="FlashSaleCampaign">Flash Sale Campaign</label>
                           </Col>
@@ -288,15 +335,22 @@ class CampaignDetails extends React.Component {
                         <br />
                         <Row>
                           <Col lg="12" xl="6">
-                            <input type="radio" id="sendnow" name="sendnow" value="sendnow" onChange={this.onoptionChanged} onClick={this.RadioChanged} />
+                            <input type="radio" id="sendnow" name="sendnow" value="sendnow" checked={option === "sendnow"}   onClick={this.onoptionChanged} />
   &nbsp; &nbsp;<label htmlFor="sendnow">Send Now</label></Col>
                           <Col lg="12" xl="6">
-                            <input type="radio" id="Schedule" name="sendnow" value="Schedule" onChange={this.onoptionChanged} onClick={this.SnowChanged} />
+                            <input type="radio" id="Schedule" name="sendnow" value="Schedule" checked={option === "Schedule"}  onClick={this.onoptionChanged} />
   &nbsp; &nbsp;<label htmlFor="Schedule">Schedule</label>
                           </Col>
 
                         </Row>
-                        <div id='radio'></div>
+                        {category === 'RegularCampaign' && option=== "Schedule"?
+                            <Regular 
+                              /> :
+                              category === 'FlashSaleCampaign' && option=== "Schedule"?
+                            <Flash 
+                              /> :
+                              <div></div>
+                          }
                       </div>
                     </Row>
                   </CardBody>
@@ -339,24 +393,20 @@ class CampaignDetails extends React.Component {
                   <CardBody>
                     <Row>
                       <div className="col">
-                        <CardTitle
-                          tag="h4"
-                          className="text-uppercase text-mutedcard mb-0"
-                        >
-                          Advanced
-                            </CardTitle>
-
-
-                        <br />
-                        <input type="checkbox" id="SmartDelivery" name="SmartDelivery" value="SmartDelivery" />
-  &nbsp; &nbsp;<label for="SmartDelivery">Smart Delivery</label>
+                        
+                        <input type="checkbox" id="SmartDelivery" name="SmartDelivery" value="SmartDelivery" disabled/>
+  &nbsp; &nbsp;<label for="SmartDelivery" style={{color:'lightgrey'}}>Smart Delivery </label>&nbsp;<Lock
+                              size={50}
+                              strokeWidth={2.5}
+                              color={'blue'}
+                            />
                         <h5>personalize the delivery time of your campaign  for each subscriber by sending the notification to them when they are most likely to be active.</h5>
 
                         <button
                           className=" btn-icon-clipboard "
                           id="tooltip982655500"
                           type="button"
-                          style={{ background: "blue", border: 0, width: "50%", padding: 10, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
+                          style={{ background: "blue", border: 0, width: "35%", padding: 10, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
                         >
                           <div>
                             {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
@@ -365,7 +415,7 @@ class CampaignDetails extends React.Component {
                               strokeWidth={2.5}
                               color={'#ffffff'}
                             />
-                            <span style={{ color: "white", fontWeight: 'bold' }}>Get In Touch</span>
+                            <span style={{ color: "white", fontWeight: 'bold' }}>Premium</span>
                           </div>
                         </button>
                       </div>
@@ -392,7 +442,7 @@ class CampaignDetails extends React.Component {
     );
   }
 }
-
+var data={}
 class CampaignNotification extends React.Component {
 
   constructor(props) {
@@ -430,7 +480,7 @@ uploadlogo=(event)=>{
   render() {
 
 
- var data={
+ data={
       title:this.state.title,
       message:this.state.message,
       banner:this.state.banner,
@@ -449,7 +499,7 @@ uploadlogo=(event)=>{
                   <CardBody>
                     <Row>
                       <div className="col">
-                        <label>Title *</label>
+                        <label>Title</label><label style={{color:'red'}}>*</label>
                         <FormGroup className="mb-3">
                           <InputGroup className="input-group-alternative">
                             <InputGroupAddon addonType="prepend">
@@ -460,59 +510,49 @@ uploadlogo=(event)=>{
                             <Input placeholder="Enter a Cachy Title" type="text" name='title' onChange={(e)=> this.setState({title:e.target.value})}/>
                           </InputGroup>
                         </FormGroup>
-                        <label>Message *</label>
+                        <label>Message </label><label style={{color:'red'}}>*</label>
                         <FormGroup className="mb-3">
 
                           <Input placeholder="Enter a Optional Title" type="textarea" name='message' onChange={(e)=> this.setState({message:e.target.value})}/>
 
                         </FormGroup>
-                        <label>Should Be less then 500 charaters</label>   </div>
+                        <label style={{color:'darkgrey'}}>Should be less than 500 characters</label>   </div>
                       <br />
 
                     </Row>
-                    <label>Primary Link *</label>
+                    <label>URL </label><label style={{color:'red'}}>*</label>
                     <FormGroup className="mb-3">
 
                       <Input placeholder="Enter Destinational URL" type="text" name='url' onChange={(e)=> this.setState({url:e.target.value})}/>
 
                     </FormGroup>
-                    <label>Desktop Home Page</label>  <br />
-                    <button
+                    <label>Desktop Banner</label>  <br />
+                    <Upload >
+    <Button icon={<UploadOutlined />}>Upload</Button>
+  </Upload>
+                    <br />
+                    <label>Mobile Logo</label>
+                    <br />
+                    <Upload >
+    <Button icon={<UploadOutlined />}>Upload</Button>
+  </Upload>
+                    {/* <button
                       className=" btn-icon-clipboard "
                       id="tooltip982655500"
                       type="button"
                       style={{ background: "blue", border: 0, width: "100%", padding: 10, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
                     >
-                      <div>
+                      <div> */}
                         {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
-                        <Lock
+                        {/* <Lock
                           size={50}
                           strokeWidth={2.5}
                           color={'#ffffff'}
                         />
                         <span style={{ color: "white", fontWeight: 'bold' }}>Upgrade to Unlock</span>
                       </div>
-                    </button>
-                    <br />
-                    <label>Mobile Home Page</label>
-                    <br />
-                    <button
-                      className=" btn-icon-clipboard "
-                      id="tooltip982655500"
-                      type="button"
-                      style={{ background: "blue", border: 0, width: "100%", padding: 10, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
-                    >
-                      <div>
-                        {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
-                        <Lock
-                          size={50}
-                          strokeWidth={2.5}
-                          color={'#ffffff'}
-                        />
-                        <span style={{ color: "white", fontWeight: 'bold' }}>Upgrade to Unlock</span>
-                      </div>
-                    </button>
-                    <label>Banner Image</label>
+                    </button> */}
+                    {/* <label>Banner Image</label>
 
                     <br />
                     <Input placeholder="Choose Banner Image" type="file" name='banner' onChange={this.uploadbanner}/>
@@ -521,7 +561,7 @@ uploadlogo=(event)=>{
                     <label>Logo</label>
 
                     <br />
-                    <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/>
+                    <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/> */}
 
                   </CardBody>
                 </Card>
@@ -717,11 +757,11 @@ class Summary extends React.Component {
                         </div>
                         <br /> 
                         {this.state.category === 'Android' ?
-                            <AndroidChrome /> :
+                            <AndroidChrome data={data}/> :
                             this.state.category === 'Window' ?
-                              <WindowChrome /> :
+                              <WindowChrome  data={data}/> :
                               this.state.category === 'Mac' ?
-                                <MacChrome /> :
+                                <MacChrome  data={data}/> :
                                 null
                           } 
                       </div>

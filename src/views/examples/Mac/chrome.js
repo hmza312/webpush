@@ -25,7 +25,7 @@ export default class MacChrome extends React.Component{
     RadioChanged() {
         const radio = (
           <div>
-    <img src={this.props.data.logo}
+    <img src={require("assets/img/theme/bell.png")}
                                     width='30px' height='30px' style={{ margin: 0,
                                         position: 'absolute',
                                         top: '30%'}}/>
@@ -54,7 +54,7 @@ export default class MacChrome extends React.Component{
   <Row>
     <div className="col">
     <Row>
-        <Col lg='4' xl='1'>
+        <Col lg='1' xl='1' md='4'>
 
         <img src={require("assets/img/theme/chrome.png")}
                                     width='30px' height='30px' style={{ margin: 0,
@@ -62,7 +62,7 @@ export default class MacChrome extends React.Component{
                                         top: '30%'}}/>
           
         </Col>   &nbsp;   &nbsp;
-        <Col lg='12' xl='7'>
+        <Col lg='7' xl='7' md='14'>
 
           <span style={{fontSize:18}}>{this.props.data.title}</span>      <br />
           <span className="h5 font-weight-bold mb-0">
@@ -72,7 +72,7 @@ export default class MacChrome extends React.Component{
           <span style={{fontWeight:10,fontFamily:'Ariel'}}>{this.props.data.message}</span>
 
         </Col>
-        <Col lg='4' xl='3' >
+        <Col lg='3' xl='3' md='8' >
 
         <div id='radio'></div>
           
