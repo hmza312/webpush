@@ -44,7 +44,7 @@ export default class Firefox extends React.Component {
 
                                     </Col>
 
-                                   <Col lg='12' xl='10'>
+                                   <Col lg='10' xl='10'>
 
 
 

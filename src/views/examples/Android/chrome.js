@@ -32,17 +32,21 @@ render(){
                                  <span className="h5 font-weight-bold mb-0">
                                    Chrome shop and rewstrauss.com 
                            </span>
-                                 <br />
+                            </div>
+                            </Row>
+                            <Row>
+                           <Col xl='9' lg='9' md='7'>
                                  <span>{this.props.data.title}</span>
                                  <br />
-                                 <span>{this.props.data.message}</span>
-                               </div>
-                               <Col className="col-auto">
-                                 
-                                   <img src={this.props.data.logo}
-                                    width='30px' height='30px' />
-                             
-                              </Col>
+                                 <span>{this.props.data.message}</span></Col>
+                               
+                               <Col xl='1'></Col>
+                                 <Col  xl='1' lg='2' >
+                          
+                                 <img src={this.props.data.logo}
+                                  width='40px' height='40px' />
+                           
+                            </Col>
                             </Row>
                             {this.props.data.banner==null?
                                  <div></div>:<img src={this.props.data.banner}

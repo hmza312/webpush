@@ -34,21 +34,7 @@ render(){
                            </span>
                          
                          
-                                 <br />
-                                 <Row>
-                                 <Col xl='10'>
-                                 <span>{this.props.data.title}</span>
-                                 <br />
-                                 <span>{this.props.data.message}</span></Col>
-                                 &nbsp;&nbsp;  &nbsp;{'    '}
-                             
-                                 <Col className="col-auto" xl='1'>
-                                 
-                                 <img src={this.props.data.logo}
-                                  width='40px' height='40px' />
-                           
-                            </Col>
-                            </Row>
+                                
                                </div>
                                <Col className="col-auto">
                                  <div >
@@ -58,6 +44,21 @@ render(){
                               </Col>
                              
                             </Row>
+                            <Row>
+                                 <Col xl='9' lg='10'>
+                                 <span>{this.props.data.title}</span>
+                                 <br />
+                                 <span>{this.props.data.message}</span></Col>
+                                 &nbsp;&nbsp;  &nbsp;{'    '}
+                             
+                                 <Col xl='1'>
+                                 
+                                 <img src={this.props.data.logo}
+                                  width='40px' height='40px' />
+                           
+                            </Col>
+                            </Row>
+                               
                             {this.props.data.banner==null?
                                  <div></div>:<img src={this.props.data.banner}
                                     width='100%' height='150px' />}

@@ -45,7 +45,9 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.12.1",
     "antd": "^4.9.4",
+    "antd-img-crop": "^3.13.2",
     "axios": "^0.21.1",
+    "bootstrap": "^4.5.3",
     "chart.js": "2.9.3",
     "classnames": "2.2.6",
     "moment": "2.24.0",
@@ -55,6 +57,7 @@
     "react-bytesize-icons": "^0.12.2",
     "react-chartjs-2": "2.9.0",
     "react-copy-to-clipboard": "5.0.2",
+    "react-croppie": "^1.0.0",
     "react-datetime": "2.16.3",
     "react-dom": "16.12.0",
     "react-google-maps": "9.4.5",

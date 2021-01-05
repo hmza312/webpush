@@ -31,20 +31,25 @@ render(){
                                <img src={require("assets/img/theme/firefox.jfif")}
                                     width='30px' height='30px' />&nbsp;&nbsp;
                                  <span className="h5 font-weight-bold mb-0">
-                                   Firefox shop and rewstrauss.com 14.27
+                                   Firefox shop and rewstrauss.com 
                            </span>
-                                 <br />
+                              </div>  
+                            </Row>
+                           <Row>
+                           <Col xl='9' lg='9' md='7'>
                                  <span>{this.props.data.title}</span>
                                  <br />
-                                 <span>{this.props.data.message}</span>
-                               </div>
-                               <Col className="col-auto">
-                                   <img src={this.props.data.logo}
-                                    width='30px' height='30px' />
-                             
-                              </Col>
-                            </Row>
+                                 <span>{this.props.data.message}</span></Col>
+                               
+                               <Col xl='1'></Col>
+                                 <Col  xl='1' lg='2' >
+                          
+                                 <img src={this.props.data.logo}
+                                  width='40px' height='40px' />
                            
+                            </Col>
+                           
+                           </Row>
                             <p className="mt-3 mb-0 text-muted text-sm">
                               <span className="text-success mr-2">
                                 <i className="fa fa-arrow-up" />Site Setting

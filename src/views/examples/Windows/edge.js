@@ -3,7 +3,7 @@ import '../campaigns.css';
 import { Bell } from 'tabler-icons-react';
 // reactstrap components
 import {
-  Button,
+ 
   Card,
   CardTitle,
   CardHeader,
@@ -18,8 +18,10 @@ import {
   InputGroupText,
   InputGroup,
 } from "reactstrap";
+import { Button } from 'antd';
 export default class Edge extends React.Component{
 render(){
+  console.log('egde',this.props.count)
     return(
         <div>
          
@@ -50,7 +52,34 @@ render(){
                            
           
         </Col>
+        <br/>
+        <br/>
+        {this.props.data.count===0
+        ?
+      <div></div>:
       
+      this.props.data.count===1?
+      <Col xl='6' >
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} onClick={this.removebutton}>
+                    Remove Button
+                  </Button></Col>
+                  :
+                  this.props.data.count===2?
+                  <Row>
+                  <Col xl='6' >
+                  <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} onClick={this.removebutton}>
+                              Remove Button
+                            </Button></Col>
+                  <Col xl='6'><Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} onClick={this.addbutton}>
+                  Add Button
+                </Button></Col>
+                </Row>
+                :
+                <div></div>
+    }
+        
+                 
+       
       </Row>
       <Row>
         <Col xl='2'></Col>

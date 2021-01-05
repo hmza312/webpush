@@ -30,25 +30,11 @@ render(){
                                <div className="col">
                                <i className="fas fa-bell " />&nbsp;&nbsp;
                                  <span className="h5 font-weight-bold mb-0">
-                                  .shop and rewstrauss.com 14.27
+                                  .shop and rewstrauss.com 
                            </span>
                          
                          
-                                 <br />
-                                 <Row>
-                                 <Col xl='10' lg='10' md='10'>
-                                 <span>{this.props.data.title}</span>
-                                 <br />
-                                 <span>{this.props.data.message}</span></Col>
-                                 &nbsp;&nbsp;  &nbsp;
-                             
-                                 <Col className="col-auto" xl='1' lg='1'>
                                  
-                                 <img src={this.props.data.logo}
-                                  width='40px' height='40px' />
-                           
-                            </Col>
-                            </Row>
                                </div>
                                <Col className="col-auto">
                                  <div >
@@ -56,8 +42,24 @@ render(){
                            <i className="fas fa-times " />
                                 </div>
                               </Col>
-                             
+                            
                             </Row>
+                            <Row>
+                                 <Col xl='9' lg='9' md='7'>
+                                 <span>{this.props.data.title}</span>
+                                 <br />
+                                 <span>{this.props.data.message}</span></Col>
+                               
+                               <Col xl='1'></Col>
+                                 <Col  xl='1' lg='2' >
+                          
+                                 <img src={this.props.data.logo}
+                                  width='40px' height='40px' />
+                           
+                            </Col>
+                               
+                            </Row>
+                           
                             {this.props.data.banner==null?
                                  <div></div>:<img src={this.props.data.banner}
                                     width='100%' height='150px' />}

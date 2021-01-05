@@ -1,5 +1,5 @@
 
-import React from "react";
+import React  ,{useState,Fragment} from "react";
 import './campaigns.css';
 import { Lock, InfoSquare } from 'tabler-icons-react';
 // reactstrap components
@@ -8,6 +8,7 @@ import AndroidChrome from './Android/chrome'
 import MacChrome from './Mac/safari'
 import { Upload,Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
+import ImgCrop from 'antd-img-crop';
 
 import {
  
@@ -53,6 +54,7 @@ const steps = [
   },
 ];
 
+
 class StartCampaign extends React.Component {
   constructor(props) {
     super(props);
@@ -72,7 +74,7 @@ class StartCampaign extends React.Component {
     this.setState({ current });
   };
   render() {
-
+    
 
     return (
       <>
@@ -442,7 +444,18 @@ class CampaignDetails extends React.Component {
     );
   }
 }
+
+   
+    
+ 
 var data={}
+var title='Enter a Cachy Title';
+var messagedata='Enter a Optional Message';
+var banner=null;
+var logo="https://previews.123rf.com/images/alekseyvanin/alekseyvanin1705/alekseyvanin170501038/77839919-ringing-bell-icon-vector-alarm-solid-logo-illustration-colorful-pictogram-isolated-on-white.jpg";
+var  fileList=''
+var  logoList=''
+var count=0;
 class CampaignNotification extends React.Component {
 
   constructor(props) {
@@ -452,9 +465,15 @@ class CampaignNotification extends React.Component {
       category: 'Android',
       title:'Enter a Cachy Title',
       message:'Enter a Optional Message',
-      banner:null,
-logo:"https://previews.123rf.com/images/alekseyvanin/alekseyvanin1705/alekseyvanin170501038/77839919-ringing-bell-icon-vector-alarm-solid-logo-illustration-colorful-pictogram-isolated-on-white.jpg",
-url:''
+     url:'',
+     count:0,
+     banner:null,
+     inputFields:[
+      { firstName: '', lastName: '' }
+     ],
+ logo:"https://previews.123rf.com/images/alekseyvanin/alekseyvanin1705/alekseyvanin170501038/77839919-ringing-bell-icon-vector-alarm-solid-logo-illustration-colorful-pictogram-isolated-on-white.jpg"
+
+  
     }
   }
   handleChange = (event) => {
@@ -462,7 +481,80 @@ url:''
     this.setState({ category: event.target.value });
 
   }
+  
 
+ onChange = ({ fileList: newFileList }) => {
+    console.log(newFileList)
+    fileList=newFileList
+    if(newFileList[0].status==='done'){
+   this.setState({ banner:URL.createObjectURL(newFileList[0].originFileObj)})
+    console.log('bannert',banner)}
+    else{
+      console.log('hello')
+    }
+};
+
+ onPreview = async file => {
+  let src = file.url;
+  if (!src) {
+    src = await new Promise(resolve => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file.originFileObj);
+      reader.onload = () => resolve(reader.result);
+    });
+  }
+  const image = new Image();
+  image.src = src;
+  const imgWindow = window.open(src);
+  imgWindow.document.write(image.outerHTML);
+};
+onChangelogo = ({ fileList: newFileList }) => {
+  console.log(newFileList)
+  
+  logoList=newFileList
+  if(newFileList[0].status==='done'){
+ this.setState({ logo:URL.createObjectURL(newFileList[0].originFileObj)})
+  console.log('bannert',logo)}
+  else{
+    console.log('hello')
+  }
+};
+
+onPreviewlogo = async file => {
+let src = file.url;
+if (!src) {
+  src = await new Promise(resolve => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file.originFileObj);
+    reader.onload = () => resolve(reader.result);
+  });
+}
+const image = new Image();
+image.src = src;
+const imgWindow = window.open(src);
+imgWindow.document.write(image.outerHTML);
+};
+//  handleAddFields = () => {
+//   const values = [...inputFields];
+//   values.push({ firstName: '', lastName: '' });
+//   setInputFields(values);
+// };
+
+//  handleRemoveFields = index => {
+//   const values = [...inputFields];
+//   values.splice(index, 1);
+//   setInputFields(values);
+// };
+// handleInputChange = (index, event) => {
+//   const values = [...inputFields];
+//   if (event.target.name === "firstName") {
+//     values[index].firstName = event.target.value;
+//   } else {
+//     values[index].lastName = event.target.value;
+//   }
+
+//   setInputFields(values);
+// };
 uploadbanner=(event)=>{
   console.log(event.target.files[0]);
   this.setState({
@@ -477,14 +569,32 @@ uploadlogo=(event)=>{
   })
   console.log("logo",this.state.logo)
 }
-  render() {
-
-
- data={
-      title:this.state.title,
-      message:this.state.message,
-      banner:this.state.banner,
-      logo:this.state.logo}
+addbutton=()=>{
+  this.setState({
+    count:this.state.count+1
+  })
+  console.log('count',this.state.count)
+}
+removebutton=()=>{
+  this.setState({
+    count:this.state.count-1
+  })
+  console.log('count',this.state.count)
+}
+// getResult=(options)=>{
+//   this.refs.reactCroppie.result(options).then( res =>{
+//     console.log('response',res)
+//   });
+// }
+render() {
+  title=this.state.title
+  messagedata=this.state.message
+  data={
+    title:title,
+    message:messagedata,
+    banner:this.state.banner,
+    logo:this.state.logo,
+  count:this.state.count} 
 
     return (
       <>
@@ -526,16 +636,165 @@ uploadlogo=(event)=>{
                       <Input placeholder="Enter Destinational URL" type="text" name='url' onChange={(e)=> this.setState({url:e.target.value})}/>
 
                     </FormGroup>
-                    <label>Desktop Banner</label>  <br />
-                    <Upload >
+                    <label> Banner</label>  <br />
+                    {/* <Upload onChange={this.onChangePciture}>
     <Button icon={<UploadOutlined />}>Upload</Button>
-  </Upload>
+  </Upload> */}
+  {/* <Input placeholder="Choose Banner Image" type="file" name='banner' onChange={this.uploadbanner}/> */}
+
+  <ImgCrop rotate>
+      <Upload
+   
+        listType="picture-card"
+        fileList={fileList}
+        onChange={this.onChange}
+        onPreview={this.onPreview}
+      >
+     {fileList.length < 1 && '+ Upload'}
+      </Upload>
+    </ImgCrop>
+   
                     <br />
-                    <label>Mobile Logo</label>
+                    <label> Logo</label>
+                    
                     <br />
-                    <Upload >
+                    <ImgCrop rotate>
+      <Upload
+   
+        listType="picture-card"
+        fileList={logoList}
+        onChange={this.onChangelogo}
+        onPreview={this.onPreviewlogo}
+      >
+     {logoList.length < 1 && '+ Upload'}
+      </Upload>
+    </ImgCrop>
+    {this.state.count===0?
+    <div >
+    <Button type="primary" onClick={this.addbutton}>
+              Add Button
+            </Button>
+  </div>
+  :
+  this.state.count===1?
+ 
+    <div className="form-row">
+
+  
+
+<h4>Button 1</h4>
+
+<input
+   type="text"
+   className="form-control"
+   id="title"
+   name="title"
+   placeholder='Title'
+   // value={inputField.firstName}
+ />         
+
+<input
+   type="text"
+   className="form-control"
+   id="url"
+   name="url"
+   placeholder='URL'
+   // value={inputField.firstName}
+   style={{marginTop:10}}
+ />          
+
+<div className="form-group col-sm-6"   style={{marginTop:10}}>
+        <Button type="primary" onClick={this.removebutton}>
+                    Remove Button
+                  </Button>
+          </div>
+          <div className="form-group col-sm-6"   style={{marginTop:10}}>
+          <Button type="primary" onClick={this.addbutton}>
+                    Add Button
+                  </Button>
+        </div>
+   
+        </div>
+        :
+        this.state.count===2?
+        <div className="form-row">
+
+  
+
+        <h4>Button 1</h4>
+        <input
+   type="text"
+   className="form-control"
+   id="title"
+   name="title"
+   placeholder='Title'
+   // value={inputField.firstName}
+ />         
+
+<input
+   type="text"
+   className="form-control"
+   id="url"
+   name="url"
+   placeholder='URL'
+   // value={inputField.firstName}
+   style={{marginTop:10}}
+ />          
+
+        
+   
+       <div className="form-group col-sm-6"   style={{marginTop:10}}>
+       <Button type="primary" onClick={this.removebutton}>
+                   Remove Button
+                 </Button>
+         </div>
+   
+         <div className="form-group col-sm-6"   style={{marginTop:10}}>
+      
+         </div>
+           
+  
+
+        <h4>Button 2</h4>
+
+        <input
+   type="text"
+   className="form-control"
+   id="title"
+   name="title"
+   placeholder='Title'
+   // value={inputField.firstName}
+ />         
+
+<input
+   type="text"
+   className="form-control"
+   id="url"
+   name="url"
+   placeholder='URL'
+   // value={inputField.firstName}
+   style={{marginTop:10}}
+ />          
+
+   
+       <div className="form-group col-sm-6"    style={{marginTop:10}}>
+       <Button type="primary" onClick={this.removebutton}>
+                   Remove Button
+                 </Button>
+         </div>
+        
+
+   
+ </div>
+ :
+
+  <div></div>
+    }
+                    {/* <Upload onChange={this.onChangePciture}>
     <Button icon={<UploadOutlined />}>Upload</Button>
-  </Upload>
+  </Upload> */}
+   {/* <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/>  */}
+
                     {/* <button
                       className=" btn-icon-clipboard "
                       id="tooltip982655500"
@@ -742,15 +1001,15 @@ class Summary extends React.Component {
                           {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
                           <Row>
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Android" name="sendnow" checked value="Android" onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Android" name="sendnow"  checked={this.state.category === "Android"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Window" name="sendnow" value="Window" onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Window">Window </label>
                             </Col>
 
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Mac" name="sendnow" value="Mac" onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Mac" name="sendnow" value="Mac"  checked={this.state.category === "Mac"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
                             </Col>
                           </Row>
