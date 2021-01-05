@@ -3,7 +3,7 @@ import '../campaigns.css';
 import { Bell } from 'tabler-icons-react';
 // reactstrap components
 import {
- 
+
   Card,
   CardTitle,
   CardHeader,
@@ -52,26 +52,26 @@ render(){
                            
           
         </Col>
-        <br/>
-        <br/>
-        {this.props.data.count===0
+       
+      </Row>
+      {this.props.data.count===0
         ?
       <div></div>:
       
       this.props.data.count===1?
       <Col xl='6' >
-        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} onClick={this.removebutton}>
-                    Remove Button
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} >
+                  {this.props.data.button1}
                   </Button></Col>
                   :
                   this.props.data.count===2?
                   <Row>
                   <Col xl='6' >
-                  <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} onClick={this.removebutton}>
-                              Remove Button
+                  <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} >
+                  {this.props.data.button1}
                             </Button></Col>
-                  <Col xl='6'><Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} onClick={this.addbutton}>
-                  Add Button
+                  <Col xl='6'><Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} >
+                  {this.props.data.button2}
                 </Button></Col>
                 </Row>
                 :
@@ -79,8 +79,7 @@ render(){
     }
         
                  
-       
-      </Row>
+      
       <Row>
         <Col xl='2'></Col>
         <Col xl='10'>

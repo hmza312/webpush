@@ -80,7 +80,7 @@ class StartCampaign extends React.Component {
       <>
         <CompaignsHeader />
         {/* Page content */}
-        <Container className=" mt--7" fluid>
+        <Container className=" mt--7" fluid style={{position:'absolute', overflow: 'hidden'}}>
           {/* Table */}
           <Row>
             <div className=" col">
@@ -100,7 +100,7 @@ class StartCampaign extends React.Component {
                           <CampaignDetails />
                           :
                           this.state.current === 1 ?
-                            <CampaignNotification />
+                            <CampaignNotification style={{position:'relative'}}/>
                             :
                             this.state.current === 2 ?
                               <Summary />
@@ -468,6 +468,8 @@ class CampaignNotification extends React.Component {
      url:'',
      count:0,
      banner:null,
+     button1title:'Button1',
+     button2title:'Button2',
      inputFields:[
       { firstName: '', lastName: '' }
      ],
@@ -594,19 +596,21 @@ render() {
     message:messagedata,
     banner:this.state.banner,
     logo:this.state.logo,
-  count:this.state.count} 
+  count:this.state.count,
+button1:this.state.button1title,
+button2:this.state.button2title} 
 
     return (
       <>
 
         {/* <div className="header pb-8 pt-5 pt-md-8" > */}
-        <Container fluid>
-          <div className="header-body">
+        <Container fluid style={{position:'relative'}}>
+          <div className="header-body" >
             {/* Card stats */}
             <Row>
-              <Col lg="12" xl="6">
-                <Card className="card-stats mb-4 mb-xl-0 card">
-                  <CardBody>
+              <Col lg="12" xl="6" >
+                <Card className="card-stats mb-4 mb-xl-0 card" >
+                  <CardBody  style={{position:'relative'}}>
                     <Row>
                       <div className="col">
                         <label>Title</label><label style={{color:'red'}}>*</label>
@@ -690,6 +694,7 @@ render() {
    id="title"
    name="title"
    placeholder='Title'
+   onChange={(e)=> this.setState({button1title:e.target.value})}
    // value={inputField.firstName}
  />         
 
@@ -699,6 +704,7 @@ render() {
    id="url"
    name="url"
    placeholder='URL'
+   
    // value={inputField.firstName}
    style={{marginTop:10}}
  />          
@@ -728,6 +734,7 @@ render() {
    id="title"
    name="title"
    placeholder='Title'
+   onChange={(e)=> this.setState({button1title:e.target.value})}
    // value={inputField.firstName}
  />         
 
@@ -763,6 +770,7 @@ render() {
    id="title"
    name="title"
    placeholder='Title'
+   onChange={(e)=> this.setState({button2title:e.target.value})}
    // value={inputField.firstName}
  />         
 
@@ -828,8 +836,8 @@ render() {
               </Col>
               <Col lg="12" xl="6">
 
-                <Card className="card-stats mb-0 mb-xl-0">
-                  <CardBody>
+                <Card className="card-stats mb-0 mb-xl-0" >
+                  <CardBody  style={{postion:'fixed'}}>
                     <Row>
                       <div className="col">
 

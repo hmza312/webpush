@@ -110,20 +110,39 @@ render(){
 </span>
           
         </Col>
-       <Col xl='7'></Col>
-       <Col xl='5'>
-        <button
-                        className=" btn-icon-clipboard "
-                        id="tooltip982655500"
-                        type="button"
-                        style={{ background: "lightgrey", border: 0, width: "100%",padding: 5, color: 'white', justifyContent: 'center', textAlign: 'center', }}
-                      >
-                      
-                          <span style={{  fontSize: 16,color: "white" ,textAlign:'center'}}>Close&nbsp;&nbsp;</span>
-                        
-                      </button></Col>
-      </Row>
+        <Col>
+        
+        {this.props.data.count===0
+        ?
+ 
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',float:'right',width:'100%'}} >
+                  Close
+                  </Button>                  
+ :
+      
+      this.props.data.count===1?
+   
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',float:'right',width:'50%'}} >
+                  {this.props.data.button1}
+                  </Button>
+                  :
+                  this.props.data.count===2?
+               <div>
+                  <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',float:'left',width:'50%'}} >
+                  {this.props.data.button1}
+                            </Button>
+                 <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',float:'right',width:'50%'}} >
+                  {this.props.data.button2}
+                </Button></div>
+                :
+                <div></div>
+    }</Col>
+        
+             </Row>
+           
+    
     </div>
+    
   </Row>
 
 </CardBody>

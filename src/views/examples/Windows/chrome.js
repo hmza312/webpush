@@ -3,7 +3,7 @@ import '../campaigns.css';
 import { Bell } from 'tabler-icons-react';
 // reactstrap components
 import {
-  Button,
+
   Card,
   CardTitle,
   CardHeader,
@@ -18,6 +18,7 @@ import {
   InputGroupText,
   InputGroup,
 } from "reactstrap";
+import {Button } from 'antd'
 export default class WindowChrome extends React.Component{
 render(){
     return(
@@ -63,7 +64,31 @@ render(){
                             {this.props.data.banner==null?
                                  <div></div>:<img src={this.props.data.banner}
                                     width='100%' height='150px' />}
-                           
+                                    <div style={{backgroundColor:'lightgrey'}}>
+                              {this.props.data.count===0
+        ?
+ 
+        <div></div>               
+ :
+      
+      this.props.data.count===1?
+   
+        <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
+                  {this.props.data.button1}
+                  </Button>
+                  :
+                  this.props.data.count===2?
+               <div>
+                  <Button style={{backgroundColor:'lightgrey',color:'blue'}}>
+                  {this.props.data.button1}
+                            </Button>
+                 <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
+                  {this.props.data.button2}
+                </Button></div>
+                :
+                <div></div>
+    }
+    </div>
                           </CardBody>
                         </Card>
 
