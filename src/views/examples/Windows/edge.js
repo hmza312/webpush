@@ -44,11 +44,11 @@ render(){
 
           <span style={{fontSize:18,color:'white'}}>{this.props.data.title}</span>      <br />
          
-          <span style={{fontWeight:18,fontFamily:'Ariel',color:'white'}}>{this.props.data.message}</span><br />
-          <span className="h6  font-weight-bold mb-0">
+          
+<span style={{fontWeight:18,fontFamily:'Ariel',color:'lightgrey'}}>{this.props.data.message}</span><br />
+          <span className="h5 font-weight-bold mb-0" style={{color:'lightgrey',fontFamily: 'Roboto,sans-serif',fontWeight:'700',fontSize:'0.625rem'}}>
           shop and rewstrauss.com .via Microsift Edge
 </span>
-
                            
           
         </Col>
@@ -60,19 +60,47 @@ render(){
       
       this.props.data.count===1?
       <Col xl='6' >
-        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} >
-                  {this.props.data.button1}
-                  </Button></Col>
+        
+        {
+        this.props.data.button1===''?
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',width:'100%'}} >
+      
+        Button 1 
+                   </Button>
+     :
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',width:'100%'}} >
+      
+      {this.props.data.button1}
+                 </Button>
+        }</Col>
                   :
                   this.props.data.count===2?
                   <Row>
                   <Col xl='6' >
-                  <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} >
-                  {this.props.data.button1}
-                            </Button></Col>
-                  <Col xl='6'><Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey'}} >
-                  {this.props.data.button2}
-                </Button></Col>
+                  {
+        this.props.data.button1===''?
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',width:'100%'}} >
+      
+        Button 1 
+                   </Button>
+     :
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',width:'100%'}} >
+      
+      {this.props.data.button1}
+                 </Button>
+        }</Col>
+                  <Col xl='6'> {
+        this.props.data.button2===''?
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',width:'100%'}} >
+      
+        Button 2
+                   </Button>
+     :
+        <Button style={{backgroundColor:'grey',color:'white',border:'1px solid grey',width:'100%'}} >
+      
+      {this.props.data.button2}
+                 </Button>
+        }</Col>
                 </Row>
                 :
                 <div></div>

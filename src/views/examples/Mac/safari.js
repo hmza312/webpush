@@ -41,13 +41,18 @@ render(){
         &nbsp;&nbsp;
         <Col lg='10' xl='10'>
 
-          <span style={{fontSize:18}}>{this.props.data.title}</span>      <br />
-          <span className="h5 font-weight-bold mb-0">
-            shop and rewstrauss.com 14.27
+        <span style={{color:'#39393a',
+    fontSize: '.9375rem',    fontFamily: 'Roboto,sans-serif'}}>{this.props.data.title}</span>      <br />
+          <span className="h5 font-weight-bold mb-0" style={{    color: '#676767',
+    fontSize: '.75rem',
+    fontWeight: '700',
+    lineHeight: 1.75,
+    fontFamily: 'Roboto,sans-serif'}}>
+            shop and rewstrauss.com 
 </span>
           <br />
-          <span style={{fontWeight:10,fontFamily:'Ariel'}}>{this.props.data.message}</span>
-
+          <span style={{    color: '#676767',
+    fontSize: '.84375rem',    fontFamily: 'Roboto,sans-serif'}}>{this.props.data.message}</span>
         </Col>
       </Row>
     </div>

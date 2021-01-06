@@ -29,7 +29,17 @@ export default class Firefox extends React.Component {
                         <Row>
                             <div className="col">
 
-                                <span className="h5 font-weight-bold mb-0">
+                                <span className="h5 font-weight-bold mb-0" style={{
+                                       fontSize : '.75rem',
+                                        color: '#000',
+                                        fontWeight: '700',
+                                        letterSpacing: '.0625rem',
+                                        lineHeight:' 1.35',
+                                        width: '100%',
+                                        whiteSpace: 'nowrap',
+                                        overflow: 'hidden',
+                                        textOverflow: 'ellipsis',
+                                }}>
                                   {this.props.data.title}    </span>
                                 <br />
                                 <Row>

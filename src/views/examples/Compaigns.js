@@ -280,13 +280,16 @@ class Compaigns extends React.Component {
                         renderItem={item => (
                           <List.Item>
                             <Card className="card-stats mb-4 mb-xl-0 card">
+                            <span style={{ fontSize: '14px', marginTop: 3 }}>&nbsp;1</span>
+                            
+                             
+                              <span style={{ fontSize: '14px', marginTop: -2 ,float:'right'}}>&nbsp;All Subscribers</span>
                               <User
                                 size={15}
                                 strokeWidth={2}
                                 color={'#000000'}
-                                style={{ marginBottom: 3 }}
+                                style={{ marginBottom: 3 ,float:'right'}}
                               />
-                              <span style={{ fontSize: '14px', marginTop: 3 }}>&nbsp;All Subscribers</span>
                               <br />
                               <br />
                               <Meta

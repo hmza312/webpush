@@ -30,7 +30,12 @@ render(){
                              <Row>
                                <div className="col">
                                <i className="fas fa-bell " />&nbsp;&nbsp;
-                                 <span className="h5 font-weight-bold mb-0">
+                                 <span className="h5 font-weight-bold mb-0" style={{    color: '#515050',
+    fontSize: '.6875rem',
+    letterSpacing: '.5px',
+    maxWidth: '100%',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis'}}>
                                   .shop and rewstrauss.com 
                            </span>
                          
@@ -47,9 +52,17 @@ render(){
                             </Row>
                             <Row>
                                  <Col xl='9' lg='9' md='7'>
-                                 <span>{this.props.data.title}</span>
+                                 <span style={{color: '#343434',
+    width:' 100%',
+    fontSize: '.8125rem',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap'}}>{this.props.data.title}</span>
                                  <br />
-                                 <span>{this.props.data.message}</span></Col>
+                                 <span style={{color: '#9f9f9f',
+    fontSize: '.8125rem',
+    width: '100%',
+    wordBreak: 'break-word'}}>{this.props.data.message}</span></Col>
                                
                                <Col xl='1'></Col>
                                  <Col  xl='1' lg='2' >
@@ -72,19 +85,42 @@ render(){
  :
       
       this.props.data.count===1?
-   
+  <div>
+      {
+        this.props.data.button1===''?
         <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
-                  {this.props.data.button1}
-                  </Button>
+       Button 1
+        </Button>
+     :
+     <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
+     {this.props.data.button1}
+     </Button>
+        }
+      </div>
+      
                   :
                   this.props.data.count===2?
                <div>
-                  <Button style={{backgroundColor:'lightgrey',color:'blue'}}>
-                  {this.props.data.button1}
-                            </Button>
-                 <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
-                  {this.props.data.button2}
-                </Button></div>
+                 {
+        this.props.data.button1===''?
+        <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
+       Button 1
+        </Button>
+     :
+     <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
+     {this.props.data.button1}
+     </Button>
+        }
+               {
+        this.props.data.button2===''?
+        <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
+       Button 2
+        </Button>
+     :
+     <Button  style={{backgroundColor:'lightgrey',color:'blue'}}>
+     {this.props.data.button2}
+     </Button>
+        }</div>
                 :
                 <div></div>
     }

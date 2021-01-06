@@ -4,6 +4,7 @@ import './campaigns.css';
 import { Lock, InfoSquare } from 'tabler-icons-react';
 // reactstrap components
 import WindowChrome from './Windows/chrome'
+import WindowChrome10 from './Windows/chromewindow10'
 import AndroidChrome from './Android/chrome'
 import MacChrome from './Mac/safari'
 import { Upload,Button } from 'antd';
@@ -613,6 +614,15 @@ button2:this.state.button2title}
                   <CardBody  style={{position:'relative'}}>
                     <Row>
                       <div className="col">
+                      <label>Campaign Name</label><label style={{color:'red'}}>*</label>
+                        <FormGroup className="mb-3">
+                          <InputGroup className="input-group-alternative">
+                            <InputGroupAddon addonType="prepend">
+                             
+                            </InputGroupAddon>
+                            <Input placeholder="Enter a Campaign Name" type="text" name='title' onChange={(e)=> this.setState({title:e.target.value})}/>
+                          </InputGroup>
+                        </FormGroup>
                         <label>Title</label><label style={{color:'red'}}>*</label>
                         <FormGroup className="mb-3">
                           <InputGroup className="input-group-alternative">
@@ -640,26 +650,24 @@ button2:this.state.button2title}
                       <Input placeholder="Enter Destinational URL" type="text" name='url' onChange={(e)=> this.setState({url:e.target.value})}/>
 
                     </FormGroup>
+                    <Row>                    <Col xl='6'>
                     <label> Banner</label>  <br />
-                    {/* <Upload onChange={this.onChangePciture}>
-    <Button icon={<UploadOutlined />}>Upload</Button>
-  </Upload> */}
-  {/* <Input placeholder="Choose Banner Image" type="file" name='banner' onChange={this.uploadbanner}/> */}
-
-  <ImgCrop rotate>
-      <Upload
-   
-        listType="picture-card"
-        fileList={fileList}
-        onChange={this.onChange}
-        onPreview={this.onPreview}
-      >
-     {fileList.length < 1 && '+ Upload'}
-      </Upload>
-    </ImgCrop>
-   
-                    <br />
-                    <label> Logo</label>
+    
+    <ImgCrop rotate>
+        <Upload
+     
+          listType="picture-card"
+          fileList={fileList}
+          onChange={this.onChange}
+          onPreview={this.onPreview}
+        >
+       {fileList.length < 1 && '+ Upload'}
+        </Upload>
+      </ImgCrop>
+     
+                    </Col>
+                   
+                 <Col xl='6'> <label> Logo</label>
                     
                     <br />
                     <ImgCrop rotate>
@@ -672,8 +680,118 @@ button2:this.state.button2title}
       >
      {logoList.length < 1 && '+ Upload'}
       </Upload>
-    </ImgCrop>
-    {this.state.count===0?
+    </ImgCrop></Col>
+    </Row>
+
+                    {/* <Upload onChange={this.onChangePciture}>
+    <Button icon={<UploadOutlined />}>Upload</Button>
+  </Upload> */}
+   {/* <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/>  */}
+
+                    {/* <button
+                      className=" btn-icon-clipboard "
+                      id="tooltip982655500"
+                      type="button"
+                      style={{ background: "blue", border: 0, width: "100%", padding: 10, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
+                    >
+                      <div> */}
+                        {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
+                        {/* <Lock
+                          size={50}
+                          strokeWidth={2.5}
+                          color={'#ffffff'}
+                        />
+                        <span style={{ color: "white", fontWeight: 'bold' }}>Upgrade to Unlock</span>
+                      </div>
+                    </button> */}
+                    {/* <label>Banner Image</label>
+
+                    <br />
+                    <Input placeholder="Choose Banner Image" type="file" name='banner' onChange={this.uploadbanner}/>
+
+                    <br />
+                    <label>Logo</label>
+
+                    <br />
+                    <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/> */}
+
+                  </CardBody>
+                </Card>
+
+              </Col>
+              <Col lg="12" xl="6">
+
+                <Card className="card-stats mb-0 mb-xl-0" >
+                  <CardBody  >
+                    <Row>
+                      <div className="col">
+
+                        <span
+                          style={{ fontSize: "18px", paddingTop: 10, fontWeight: 'bold' }}
+                        >
+
+                          Preview
+                            </span>
+                        <button
+                          className=" btn-icon-clipboard "
+                          id="tooltip982655500"
+                          type="button"
+                          style={{ background: "blue", float: 'right', border: 0, width: "50%", padding: 5, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
+                        >
+                          <div>
+                            {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
+                            <InfoSquare
+                              size={50}
+                              strokeWidth={4}
+                              color={'#ffffff'}
+                            />
+                            <span style={{ color: "white", fontWeight: 'bold' }}>Test Notification</span>
+                          </div>
+                        </button>
+
+                        <br />
+                        <br />
+                        <br />
+                        <div >
+                          {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
+                          <Row>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Android" name="sendnow" value="Android"   checked={this.state.category === "Android"} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"} onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Window">Window </label>
+                            </Col>
+
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Mac" name="sendnow" value="Mac"  checked={this.state.category === "Mac"} onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
+                            </Col>
+                          </Row>
+                          {this.state.category === 'Android' ?
+                            <Android data={data}
+                              /> :
+                            this.state.category === 'Window' ?
+                              <Window data={data}/> :
+                              this.state.category === 'Mac' ?
+                                <Mac data={data}/> :
+                                null
+                          }
+                        </div>
+                        <br />
+
+                        <div id='notification'></div>
+                      </div>
+
+
+                    </Row>
+
+                  </CardBody>
+                </Card>
+    
+                <Card className="card-stats mb-0 mb-xl-0" style={{marginTop:8}}>
+                  <CardBody  >
+                {this.state.count===0?
     <div >
     <Button type="primary" onClick={this.addbutton}>
               Add Button
@@ -798,115 +916,13 @@ button2:this.state.button2title}
 
   <div></div>
     }
-                    {/* <Upload onChange={this.onChangePciture}>
-    <Button icon={<UploadOutlined />}>Upload</Button>
-  </Upload> */}
-   {/* <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/>  */}
-
-                    {/* <button
-                      className=" btn-icon-clipboard "
-                      id="tooltip982655500"
-                      type="button"
-                      style={{ background: "blue", border: 0, width: "100%", padding: 10, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
-                    >
-                      <div> */}
-                        {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
-                        {/* <Lock
-                          size={50}
-                          strokeWidth={2.5}
-                          color={'#ffffff'}
-                        />
-                        <span style={{ color: "white", fontWeight: 'bold' }}>Upgrade to Unlock</span>
-                      </div>
-                    </button> */}
-                    {/* <label>Banner Image</label>
-
-                    <br />
-                    <Input placeholder="Choose Banner Image" type="file" name='banner' onChange={this.uploadbanner}/>
-
-                    <br />
-                    <label>Logo</label>
-
-                    <br />
-                    <Input placeholder="Choose Logo" type="file" name='logo' onChange={this.uploadlogo}/> */}
-
-                  </CardBody>
-                </Card>
-
+    </CardBody>
+    </Card>
               </Col>
-              <Col lg="12" xl="6">
-
-                <Card className="card-stats mb-0 mb-xl-0" >
-                  <CardBody  style={{postion:'fixed'}}>
-                    <Row>
-                      <div className="col">
-
-                        <span
-                          style={{ fontSize: "18px", paddingTop: 10, fontWeight: 'bold' }}
-                        >
-
-                          Preview
-                            </span>
-                        <button
-                          className=" btn-icon-clipboard "
-                          id="tooltip982655500"
-                          type="button"
-                          style={{ background: "blue", float: 'right', border: 0, width: "50%", padding: 5, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
-                        >
-                          <div>
-                            {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
-                            <InfoSquare
-                              size={50}
-                              strokeWidth={4}
-                              color={'#ffffff'}
-                            />
-                            <span style={{ color: "white", fontWeight: 'bold' }}>Test Notification</span>
-                          </div>
-                        </button>
-
-                        <br />
-                        <br />
-                        <br />
-                        <div >
-                          {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
-                          <Row>
-                            <Col lg="8" xl="4">
-                              <input type="radio" id="Android" name="sendnow" value="Android"   checked={this.state.category === "Android"} onClick={this.handleChange} />
-  &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
-                            <Col lg="8" xl="4">
-                              <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"} onChange={this.onoptionChanged} onClick={this.handleChange} />
-  &nbsp; &nbsp;<label htmlFor="Window">Window </label>
-                            </Col>
-
-                            <Col lg="8" xl="4">
-                              <input type="radio" id="Mac" name="sendnow" value="Mac"  checked={this.state.category === "Mac"} onChange={this.onoptionChanged} onClick={this.handleChange} />
-  &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
-                            </Col>
-                          </Row>
-                          {this.state.category === 'Android' ?
-                            <Android data={data}
-                              /> :
-                            this.state.category === 'Window' ?
-                              <Window data={data}/> :
-                              this.state.category === 'Mac' ?
-                                <Mac data={data}/> :
-                                null
-                          }
-                        </div>
-                        <br />
-
-                        <div id='notification'></div>
-                      </div>
-
-
-                    </Row>
-
-                  </CardBody>
-                </Card>
-
-              </Col>
-
+       
+             
             </Row>
+     
           </div>
 
 
@@ -950,7 +966,7 @@ class Summary extends React.Component {
           <div className="header-body">
             {/* Card stats */}
             <Row>
-              <Col lg="12" xl="5">
+              <Col lg="12" xl="12">
                 <Card className="card-stats mb-4 mb-xl-0 card">
                   <CardBody>
                     <Row>
@@ -991,7 +1007,12 @@ class Summary extends React.Component {
 
 
               </Col>
-              <Col lg="12" xl="7">
+              </Row>
+              <br/>
+              <div style={{backgroundColor:'white'}}>
+              <Row>
+              
+              <Col lg="12" xl="6">
                 <Card className="card-stats mb-0 mb-xl-0">
                   <CardBody>
                     <Row>
@@ -1000,16 +1021,15 @@ class Summary extends React.Component {
                           tag="h4"
                           className="text-uppercase text-mutedcard mb-0"
                         >
-                          Preview
+                         Android
                             </CardTitle>
 
 
                         <br />
-                        <div >
-                          {/* <span className="h5 font-weight-bold mb-0" style={{background:'lightgrey',borderRadius:'10%',textAlign:'center'}}>Android</span> */}
-                          <Row>
+                        {/* <div >
+                           <Row>
                             <Col lg="8" xl="4">
-                              <input type="radio" id="Android" name="sendnow"  checked={this.state.category === "Android"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+                              <input type="radio" id="Android" name="sendnow" value="Android" checked={this.state.category === "Android"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
                             <Col lg="8" xl="4">
                               <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
@@ -1021,16 +1041,17 @@ class Summary extends React.Component {
   &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
                             </Col>
                           </Row>
-                        </div>
-                        <br /> 
-                        {this.state.category === 'Android' ?
+                        </div> */}
+                        
+                        <AndroidChrome data={data}/> 
+                        {/* {this.state.category === 'Android' ?
                             <AndroidChrome data={data}/> :
                             this.state.category === 'Window' ?
                               <WindowChrome  data={data}/> :
                               this.state.category === 'Mac' ?
                                 <MacChrome  data={data}/> :
                                 null
-                          } 
+                          }  */}
                       </div>
                       {/* </div> */}
 
@@ -1039,10 +1060,154 @@ class Summary extends React.Component {
                   </CardBody>
                 </Card>
               </Col>
+              <Col lg="12" xl="6">
+                <Card className="card-stats mb-0 mb-xl-0">
+                  <CardBody>
+                    <Row>
+                      <div className="col">
+                        <CardTitle
+                          tag="h4"
+                          className="text-uppercase text-mutedcard mb-0"
+                        >
+                        Window 10
+                            </CardTitle>
 
+
+                        <br />
+                        {/* <div >
+                           <Row>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Android" name="sendnow" value="Android" checked={this.state.category === "Android"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Window">Window </label>
+                            </Col>
+
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Mac" name="sendnow" value="Mac"  checked={this.state.category === "Mac"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
+                            </Col>
+                          </Row>
+                        </div> */}
+                    
+                        <WindowChrome10 data={data}/> 
+                        {/* {this.state.category === 'Android' ?
+                            <AndroidChrome data={data}/> :
+                            this.state.category === 'Window' ?
+                              <WindowChrome  data={data}/> :
+                              this.state.category === 'Mac' ?
+                                <MacChrome  data={data}/> :
+                                null
+                          }  */}
+                      </div>
+                      {/* </div> */}
+
+                    </Row>
+
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col lg="12" xl="6">
+                <Card className="card-stats mb-0 mb-xl-0" style={{padding:2}}>
+                  <CardBody>
+                    <Row>
+                      <div className="col">
+                        <CardTitle
+                          tag="h4"
+                          className="text-uppercase text-mutedcard mb-0"
+                        >
+                         Window 8
+                            </CardTitle>
+
+
+                        <br />
+                        {/* <div >
+                           <Row>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Android" name="sendnow" value="Android" checked={this.state.category === "Android"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Window">Window </label>
+                            </Col>
+
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Mac" name="sendnow" value="Mac"  checked={this.state.category === "Mac"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
+                            </Col>
+                          </Row>
+                        </div> */}
+                        
+                        <WindowChrome data={data}/> 
+                        {/* {this.state.category === 'Android' ?
+                            <AndroidChrome data={data}/> :
+                            this.state.category === 'Window' ?
+                              <WindowChrome  data={data}/> :
+                              this.state.category === 'Mac' ?
+                                <MacChrome  data={data}/> :
+                                null
+                          }  */}
+                      </div>
+                      {/* </div> */}
+
+                    </Row>
+
+                  </CardBody>
+                </Card>
+              </Col>
+              <Col lg="12" xl="6">
+                <Card className="card-stats mb-0 mb-xl-0">
+                  <CardBody>
+                    <Row>
+                      <div className="col">
+                        <CardTitle
+                          tag="h4"
+                          className="text-uppercase text-mutedcard mb-0"
+                        >
+                     Mac
+                            </CardTitle>
+
+
+                        <br />
+                        {/* <div >
+                           <Row>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Android" name="sendnow" value="Android" checked={this.state.category === "Android"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Android">Android</label></Col>
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Window" name="sendnow" value="Window"  checked={this.state.category === "Window"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Window">Window </label>
+                            </Col>
+
+                            <Col lg="8" xl="4">
+                              <input type="radio" id="Mac" name="sendnow" value="Mac"  checked={this.state.category === "Mac"}  onChange={this.onoptionChanged} onClick={this.handleChange} />
+  &nbsp; &nbsp;<label htmlFor="Mac">Mac </label>
+                            </Col>
+                          </Row>
+                        </div> */}
+                    
+                        <MacChrome data={data}/> 
+                        {/* {this.state.category === 'Android' ?
+                            <AndroidChrome data={data}/> :
+                            this.state.category === 'Window' ?
+                              <WindowChrome  data={data}/> :
+                              this.state.category === 'Mac' ?
+                                <MacChrome  data={data}/> :
+                                null
+                          }  */}
+                      </div>
+                      {/* </div> */}
+
+                    </Row>
+
+                  </CardBody>
+                </Card>
+              </Col>
+              
             </Row>
           </div>
-
+          </div>
 
 
 

@@ -30,7 +30,7 @@ render(){
                                <div className="col">
                                <img src={require("assets/img/theme/firefox.jfif")}
                                     width='30px' height='30px' />&nbsp;&nbsp;
-                                 <span className="h5 font-weight-bold mb-0">
+                               <span className="h5 font-weight-bold mb-0" style={{color:'#676767',fontFamily: 'Roboto,sans-serif',fontSize:'0.75rem'}}>
                                    Firefox shop and rewstrauss.com 
                            </span>
                               </div>  
@@ -39,7 +39,10 @@ render(){
                            <Col xl='9' lg='9' md='7'>
                                  <span>{this.props.data.title}</span>
                                  <br />
-                                 <span>{this.props.data.message}</span></Col>
+                                 <span style={{fontSize:' .875rem',
+    color: '#6a6a6a',
+    wordBreak: 'break-word',
+    lineHeight: 1.58}}>{this.props.data.message}</span></Col>
                                
                                <Col xl='1'></Col>
                                  <Col  xl='1' lg='2' >

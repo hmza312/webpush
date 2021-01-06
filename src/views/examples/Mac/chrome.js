@@ -25,10 +25,10 @@ export default class MacChrome extends React.Component{
     RadioChanged() {
         const radio = (
           <div>
-    <img src={require("assets/img/theme/bell.png")}
-                                    width='30px' height='30px' style={{ margin: 0,
+ <img src={require("assets/img/theme/bell.png")}
+                                    width='40px' height='40px' style={{ marginLeft: 40,
                                         position: 'absolute',
-                                        top: '30%'}}/>
+                                        top: '20%'}}/>
           </div>
         )
         ReactDOM.render(radio, document.getElementById('radio'));
@@ -64,12 +64,18 @@ export default class MacChrome extends React.Component{
         </Col>   &nbsp;   &nbsp;
         <Col lg='7' xl='7' md='14'>
 
-          <span style={{fontSize:18}}>{this.props.data.title}</span>      <br />
-          <span className="h5 font-weight-bold mb-0">
+          <span style={{color:'#39393a',
+    fontSize: '.9375rem',    fontFamily: 'Roboto,sans-serif'}}>{this.props.data.title}</span>      <br />
+          <span className="h5 font-weight-bold mb-0" style={{    color: '#676767',
+    fontSize: '.75rem',
+    fontWeight: '700',
+    lineHeight: 1.75,
+    fontFamily: 'Roboto,sans-serif'}}>
             shop and rewstrauss.com 
 </span>
           <br />
-          <span style={{fontWeight:10,fontFamily:'Ariel'}}>{this.props.data.message}</span>
+          <span style={{    color: '#676767',
+    fontSize: '.84375rem',    fontFamily: 'Roboto,sans-serif'}}>{this.props.data.message}</span>
 
         </Col>
         <Col lg='3' xl='3' md='8' >
