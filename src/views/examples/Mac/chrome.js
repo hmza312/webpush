@@ -49,7 +49,7 @@ export default class MacChrome extends React.Component{
         <div>
          
 
-         <Card className="" style={{borderRadius:10,backgroundColor:'lightgrey',padding:1}} onMouseEnter={this.Enter} onMouseLeave={()=>this.RadioChanged}>
+         <Card className="" style={{borderRadius:10,backgroundColor:'lightgrey',padding:1}} onMouseEnter={this.Enter} onMouseLeave={this.RadioChanged}>
 <CardBody>
   <Row>
     <div className="col">

@@ -2,11 +2,23 @@
 import React  ,{useState,Fragment} from "react";
 import './campaigns.css';
 import { Lock, InfoSquare } from 'tabler-icons-react';
+import { Modal } from 'antd';
+import Draggable from 'react-draggable';
+
 // reactstrap components
 import WindowChrome from './Windows/chrome'
+import WindowOpera from './Windows/opera'
 import WindowChrome10 from './Windows/chromewindow10'
+import WindowOpera10 from './Windows/operawindow10'
+import Firefox from './Windows/firefox'
+import Edge from './Windows/edge'
 import AndroidChrome from './Android/chrome'
-import MacChrome from './Mac/safari'
+import AndroidFirefox from './Android/firefox'
+import AndroidOpera from './Android/opera'
+import MacChrome from './Mac/chrome'
+import MacSafari from './Mac/safari'
+import MacOpera from './Mac/opera'
+import MacFirefox from './Mac/firefox'
 import { Upload,Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import ImgCrop from 'antd-img-crop';
@@ -471,14 +483,35 @@ class CampaignNotification extends React.Component {
      banner:null,
      button1title:'Button1',
      button2title:'Button2',
-     inputFields:[
-      { firstName: '', lastName: '' }
-     ],
+     visible: false,
+     disabled: true,
+     bounds: { left: 0, top: 0, bottom: 0, right: 0 },
+   
  logo:"https://previews.123rf.com/images/alekseyvanin/alekseyvanin1705/alekseyvanin170501038/77839919-ringing-bell-icon-vector-alarm-solid-logo-illustration-colorful-pictogram-isolated-on-white.jpg"
 
   
     }
   }
+  draggleRef = React.createRef();
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  onStart = (event, uiData) => {
+    const { clientWidth, clientHeight } = window?.document?.documentElement;
+    const targetRect = this.draggleRef?.current?.getBoundingClientRect();
+    this.setState({
+      bounds: {
+        left: -targetRect?.left + uiData?.x,
+        right: clientWidth - (targetRect?.right - uiData?.x),
+        top: -targetRect?.top + uiData?.y,
+        bottom: clientHeight - (targetRect?.bottom - uiData?.y),
+      },
+    });
+  };
+
   handleChange = (event) => {
     console.log(event.target.value)
     this.setState({ category: event.target.value });
@@ -574,8 +607,18 @@ uploadlogo=(event)=>{
 }
 addbutton=()=>{
   this.setState({
+    count:1
+  })
+  this.setState({
+    visible: true,
+  });
+  console.log('count',this.state.count)
+}
+addbuttonsecond=()=>{
+  this.setState({
     count:this.state.count+1
   })
+ 
   console.log('count',this.state.count)
 }
 removebutton=()=>{
@@ -584,6 +627,22 @@ removebutton=()=>{
   })
   console.log('count',this.state.count)
 }
+handleOk = e => {
+  console.log(e);
+  this.setState({
+    visible: false,
+  });
+};
+
+handleCancel = e => {
+  console.log(e);
+  this.setState({
+    count:0
+  })
+  this.setState({
+    visible: false,
+  });
+};
 // getResult=(options)=>{
 //   this.refs.reactCroppie.result(options).then( res =>{
 //     console.log('response',res)
@@ -791,131 +850,184 @@ button2:this.state.button2title}
     
                 <Card className="card-stats mb-0 mb-xl-0" style={{marginTop:8}}>
                   <CardBody  >
-                {this.state.count===0?
+             
     <div >
     <Button type="primary" onClick={this.addbutton}>
               Add Button
             </Button>
-  </div>
-  :
-  this.state.count===1?
+            </div>
+     
+            <Modal
+          title={
+            <div
+              style={{
+                width: '100%',
+                cursor: 'move',
+              }}
+              onMouseOver={() => {
+                if (this.state.disabled) {
+                  this.setState({
+                    disabled: false,
+                  });
+                }
+              }}
+              onMouseOut={() => {
+                this.setState({
+                  disabled: true,
+                });
+              }}
+              // fix eslintjsx-a11y/mouse-events-have-key-events
+              // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/master/docs/rules/mouse-events-have-key-events.md
+              onFocus={() => {}}
+              onBlur={() => {}}
+              // end
+            >
+              Add Button
+            </div>
+          }
+          style={{ right:200,top:30}}
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={[
+            <Button key="Discard" danger onClick={this.handleCancel}>
+              Discard
+            </Button>,
+            <Button key="Save" type="primary"  onClick={this.handleOk}>
+              Save
+            </Button>
+          ]}
+          modalRender={modal => (
+            <Draggable
+              disabled={this.state.disabled}
+              bounds={this.state.bounds}
+              onStart={(event, uiData) => this.onStart(event, uiData)}
+            >
+              <div ref={this.draggleRef}>{modal}</div>
+            </Draggable>
+          )}
+        >
  
-    <div className="form-row">
 
   
+   { this.state.count===1?
+ 
+ <div className="form-row">
+
+
 
 <h4>Button 1</h4>
 
 <input
-   type="text"
-   className="form-control"
-   id="title"
-   name="title"
-   placeholder='Title'
-   onChange={(e)=> this.setState({button1title:e.target.value})}
-   // value={inputField.firstName}
- />         
+type="text"
+className="form-control"
+id="title"
+name="title"
+placeholder='Title'
+onChange={(e)=> this.setState({button1title:e.target.value})}
+// value={inputField.firstName}
+/>         
 
 <input
-   type="text"
-   className="form-control"
-   id="url"
-   name="url"
-   placeholder='URL'
-   
-   // value={inputField.firstName}
-   style={{marginTop:10}}
- />          
+type="text"
+className="form-control"
+id="url"
+name="url"
+placeholder='URL'
 
-<div className="form-group col-sm-6"   style={{marginTop:10}}>
-        <Button type="primary" onClick={this.removebutton}>
-                    Remove Button
-                  </Button>
-          </div>
-          <div className="form-group col-sm-6"   style={{marginTop:10}}>
-          <Button type="primary" onClick={this.addbutton}>
-                    Add Button
-                  </Button>
-        </div>
-   
-        </div>
-        :
-        this.state.count===2?
-        <div className="form-row">
+// value={inputField.firstName}
+style={{marginTop:10}}
+/>          
 
-  
 
-        <h4>Button 1</h4>
-        <input
-   type="text"
-   className="form-control"
-   id="title"
-   name="title"
-   placeholder='Title'
-   onChange={(e)=> this.setState({button1title:e.target.value})}
-   // value={inputField.firstName}
- />         
-
-<input
-   type="text"
-   className="form-control"
-   id="url"
-   name="url"
-   placeholder='URL'
-   // value={inputField.firstName}
-   style={{marginTop:10}}
- />          
-
-        
-   
        <div className="form-group col-sm-6"   style={{marginTop:10}}>
-       <Button type="primary" onClick={this.removebutton}>
-                   Remove Button
-                 </Button>
-         </div>
-   
-         <div className="form-group col-sm-6"   style={{marginTop:10}}>
-      
-         </div>
-           
-  
+       <Button type="primary" onClick={this.addbuttonsecond}>
+                 Add Button
+               </Button>
+     </div>
 
-        <h4>Button 2</h4>
+     </div>
+     :
+     this.state.count===2?
+     <div className="form-row">
 
-        <input
-   type="text"
-   className="form-control"
-   id="title"
-   name="title"
-   placeholder='Title'
-   onChange={(e)=> this.setState({button2title:e.target.value})}
-   // value={inputField.firstName}
- />         
+
+
+     <h4>Button 1</h4>
+     <input
+type="text"
+className="form-control"
+id="title"
+name="title"
+placeholder='Title'
+onChange={(e)=> this.setState({button1title:e.target.value})}
+// value={inputField.firstName}
+/>         
 
 <input
-   type="text"
-   className="form-control"
-   id="url"
-   name="url"
-   placeholder='URL'
-   // value={inputField.firstName}
-   style={{marginTop:10}}
- />          
+type="text"
+className="form-control"
+id="url"
+name="url"
+placeholder='URL'
+// value={inputField.firstName}
+style={{marginTop:10}}
+/>          
 
+     
+
+    <div className="form-group col-sm-6"   style={{marginTop:10}}>
+    <Button type="primary" onClick={this.removebutton}>
+                Remove Button
+              </Button>
+      </div>
+
+      <div className="form-group col-sm-6"   style={{marginTop:10}}>
    
-       <div className="form-group col-sm-6"    style={{marginTop:10}}>
-       <Button type="primary" onClick={this.removebutton}>
-                   Remove Button
-                 </Button>
-         </div>
+      </div>
         
 
-   
- </div>
- :
 
-  <div></div>
-    }
+     <h4>Button 2</h4>
+
+     <input
+type="text"
+className="form-control"
+id="title"
+name="title"
+placeholder='Title'
+onChange={(e)=> this.setState({button2title:e.target.value})}
+// value={inputField.firstName}
+/>         
+
+<input
+type="text"
+className="form-control"
+id="url"
+name="url"
+placeholder='URL'
+// value={inputField.firstName}
+style={{marginTop:10}}
+/>          
+
+
+    <div className="form-group col-sm-6"    style={{marginTop:10}}>
+    <Button type="primary" onClick={this.removebutton}>
+                Remove Button
+              </Button>
+      </div>
+     
+
+
+</div>
+:
+<div></div>
+}
+
+     </Modal>
+
+             
+ 
     </CardBody>
     </Card>
               </Col>
@@ -942,9 +1054,15 @@ class Summary extends React.Component {
     super(props);
     this.state = {
       current: 0,
-      category: 'Android',
+      category:'',
+
 
     }
+  }
+  componentDidMount(){
+    this.setState({
+      category:window.$user
+    })
   }
   handleChange = (event) => {
     console.log(event.target.value)
@@ -954,7 +1072,7 @@ class Summary extends React.Component {
 
 
   render() {
-
+console.log("summary" , this.state.category)
 
 
 
@@ -974,6 +1092,7 @@ class Summary extends React.Component {
                         <CardTitle
                           tag="h4"
                           className="text-uppercase text-mutedcard mb-0"
+                          style={{textAlign:'center'}}
                         >
                           Campaign Summary
                           <Edit
@@ -983,19 +1102,20 @@ class Summary extends React.Component {
                           />
                         </CardTitle>
                         <br />
+                        <Row>
+                        <Col xl='4'>
                         <span className="h5 font-weight-bold mb-0"> Type of Campaign</span><br />
                         <span style={{ background: 'lightgrey' }} className="h5 font-weight-bold mb-0"> Regular Campaign</span>
-                        <br />
-                        <br />
+                        </Col>
+                        <Col xl='4'>
                         <span className="h5 font-weight-bold mb-0"> Sending To</span><br />
                         <span style={{ background: 'lightgrey' }} className="h5 font-weight-bold mb-0"> All Subscriber(Subscriber Count 97)</span>
-                        <br />
-                        <br />
+                        </Col>
+                        <Col xl='4'>
                         <span className="h5 font-weight-bold mb-0"> Start (Pakistan Standard Time</span><br />
                         <span style={{ background: 'lightgrey' }} className="h5 font-weight-bold mb-0"> Immediately</span>
-                        <br />
-                      <br />
-                    
+                        </Col>
+                        </Row>
                       </div>
 
                       
@@ -1010,6 +1130,14 @@ class Summary extends React.Component {
               </Row>
               <br/>
               <div style={{backgroundColor:'white'}}>
+              <br/>
+             <p  tag="h3"
+                          className="text-uppercase text-mutedcard mb-0"
+                          style={{textAlign:'center',fontSize:'16px'}}
+                       >Preview Summary</p>
+                
+               
+                       <br/>
               <Row>
               
               <Col lg="12" xl="6">
@@ -1042,8 +1170,17 @@ class Summary extends React.Component {
                             </Col>
                           </Row>
                         </div> */}
-                        
+                        {this.state.category.android==='ChromeonAndroid'?
                         <AndroidChrome data={data}/> 
+                        :
+                        this.state.category.android==='FirefoxonAndroid' ?
+             <AndroidFirefox data={data}/>:
+             this.state.category.android==='OperaonAndroid' ?
+             <AndroidOpera data={data}/>
+             :
+             <div></div>
+                      }
+
                         {/* {this.state.category === 'Android' ?
                             <AndroidChrome data={data}/> :
                             this.state.category === 'Window' ?
@@ -1090,8 +1227,19 @@ class Summary extends React.Component {
                             </Col>
                           </Row>
                         </div> */}
-                    
-                        <WindowChrome10 data={data}/> 
+                      {
+                        this.state.category.window==='ChromeonWindows10' ?
+                        <WindowChrome10   data={data}/>:
+                        this.state.category.window==='OperaonWindows10' ?
+                        <WindowOpera10   data={data}/>
+             :    this.state.category.window==='FirefoxonWindows10' ?
+             <Firefox data={data}/> :
+             this.state.category.window==='EdgeonWindows10' ?
+             <Edge data={data}/>
+             :
+             <div></div>
+                      }
+                        
                         {/* {this.state.category === 'Android' ?
                             <AndroidChrome data={data}/> :
                             this.state.category === 'Window' ?
@@ -1138,8 +1286,17 @@ class Summary extends React.Component {
                             </Col>
                           </Row>
                         </div> */}
+                         {
+                        this.state.category.window==='ChromeonWindows10' ?
+                        <WindowChrome   data={data}/>:
+                        this.state.category.window==='OperaonWindows' ?
+                        <WindowOpera   data={data}/>
+             :    this.state.category.window==='FirefoxonWindows' ?
+             <Firefox data={data}/> :
+            
+             <WindowChrome data={data}/> 
+                      }
                         
-                        <WindowChrome data={data}/> 
                         {/* {this.state.category === 'Android' ?
                             <AndroidChrome data={data}/> :
                             this.state.category === 'Window' ?
@@ -1187,7 +1344,17 @@ class Summary extends React.Component {
                           </Row>
                         </div> */}
                     
-                        <MacChrome data={data}/> 
+                    {
+                      this.state.category.mac==='SafarionMacOS' ?
+                      <MacSafari data={data}/> :
+                      this.state.category.mac==='ChromeonMacOS' ?
+                      <MacChrome data={data}/> :
+                      this.state.category.mac==='FirefoxonMacOS' ?
+                      <MacFirefox data={data}/> :
+                      this.state.category.mac==='OperaonMacOS' ?
+                      <MacOpera data={data}/> :
+             <div></div>
+                    }
                         {/* {this.state.category === 'Android' ?
                             <AndroidChrome data={data}/> :
                             this.state.category === 'Window' ?

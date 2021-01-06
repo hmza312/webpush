@@ -27,6 +27,14 @@ import 'antd/dist/antd.css';
 import AdminLayout from "layouts/Admin.js";
 import AuthLayout from "layouts/Auth.js";
 import StartCampaign from "views/examples/startcampigns.js";
+
+      window.$user = {
+          android: "ChromeonAndroid",
+          window8: "ChromeonWindows",
+          window: "ChromeonWindows10",
+          mac:"ChromeonMacOS"
+      }
+   
 ReactDOM.render(
   <BrowserRouter>
     <Switch>

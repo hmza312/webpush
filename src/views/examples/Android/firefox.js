@@ -53,12 +53,7 @@ render(){
                             </Col>
                            
                            </Row>
-                            <p className="mt-3 mb-0 text-muted text-sm">
-                              <span className="text-success mr-2">
-                                <i className="fa fa-arrow-up" />Site Setting
-                        </span>{" "}
-
-                            </p>
+                           
                           </CardBody>
                         </Card>
 

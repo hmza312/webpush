@@ -17,6 +17,8 @@ export default class Android extends React.Component{
     //   console.log(a)
       this.setState({androidcategory:value});
     console.log(`selected ${value}`);
+    window.$user.android=value
+    console.log('android',window.$user)
     }
     render(){
       return(
