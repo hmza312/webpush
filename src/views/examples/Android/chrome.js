@@ -47,7 +47,7 @@ render(){
     lineHeight: 1.58}}>{this.props.data.message}</span><br />
           </Col>
                                
-                               <Col xl='1'></Col>
+                               <Col xl='1' lg='1'></Col>
                                  <Col  xl='1' lg='2' >
                           
                                  <img src={this.props.data.logo}

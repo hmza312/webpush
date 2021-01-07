@@ -62,6 +62,11 @@ class Sidebar extends React.Component {
     super(props);
     this.activeRoute.bind(this);
   }
+  Startcampaign = () => {
+
+    window.location = `/admin/StartCampaign`;
+
+  }
   // verifies if routeName is the one active (in browser input)
   activeRoute(routeName) {
     return this.props.location.pathname.indexOf(routeName) > -1 ? "active" : "";
@@ -82,16 +87,28 @@ class Sidebar extends React.Component {
   createLinks = routes => {
     return routes.map((prop, key) => {
       return (
+        
         <NavItem key={key}>
-          <NavLink
-            to={prop.layout + prop.path}
-            tag={NavLinkRRD}
-            onClick={this.closeCollapse}
-            activeClassName="active"
-          >
-            <i className={prop.icon} />
-            {prop.name}
-          </NavLink>
+        {prop.name==='Start Campaign'
+      ?
+      <NavLink
+     
+    >
+      {/* <i className={prop.icon} />
+      {prop.name} */}
+    </NavLink>
+    :
+    <NavLink
+    to={prop.layout + prop.path}
+    tag={NavLinkRRD}
+    onClick={this.closeCollapse}
+    activeClassName="active"
+  >
+    <i className={prop.icon} />
+    {prop.name}
+  </NavLink>
+    }
+      
         </NavItem>
       );
     });
@@ -256,7 +273,8 @@ class Sidebar extends React.Component {
                           id="tooltip982655500"
                           type="button"
                           style={{background:"green",border:0,width:"75%",padding:10,color:'white',justifyContent:'center',textAlign:'center',fontSize:14,}}
-                        >
+                       onClick={this.Startcampaign}
+                       >
                           <div>
                             {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
                             <Plus

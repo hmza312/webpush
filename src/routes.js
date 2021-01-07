@@ -29,49 +29,49 @@ var routes = [
   {
     path: "/index",
     name: "Home",
-    icon: "ni ni-tv-2 text-primary",
+    icon: "ni ni-app text-black",
     component: Index,
     layout: "/admin"
   },
   {
     path: "/Campaigns",
     name: "Campaigns",
-    icon: "ni ni-planet text-blue",
+    icon: "ni ni-bell-55 text-black",
     component: Compaigns,
     layout: "/admin"
   },
   {
     path: "/Annotation",
     name: "Annotation",
-    icon: "ni ni-pin-3 text-orange",
+    icon: "ni ni-ruler-pencil text-black",
     component: Annotation,
     layout: "/admin"
   },
   {
     path: "/Subscribers",
     name: "Subscribers",
-    icon: "ni ni-single-02 text-yellow",
+    icon: "ni ni-single-02 text-black",
     component: Subscribers,
     layout: "/admin"
   },
   {
     path: "/Segments",
     name: "Segments",
-    icon: "ni ni-bullet-list-67 text-red",
+    icon: "ni ni-single-copy-04 text-black",
     component: Segments,
     layout: "/admin"
   },
   {
     path: "/Optins",
     name: "Optins",
-    icon: "ni ni-key-25 text-info",
+    icon: "ni ni-settings text-black",
     component: Optins,
     layout: "/admin"
   },
   {
     path: "/Integrations",
     name: "Integrations",
-    icon: "ni ni-circle-08 text-pink",
+    icon: "ni ni-settings-gear-65 text-black",
     component: Integrations,
     layout: "/admin"
   },

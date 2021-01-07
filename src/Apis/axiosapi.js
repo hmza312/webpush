@@ -7,7 +7,10 @@ class axiosInstance {
     login(credentials) {
         return axios.post(USER_API_BASE_URL + "rest-auth/login/", credentials);
     }
-    
+    SendCampaign(credentials) {
+        return axios.post(USER_API_BASE_URL + "campaigns/", credentials);
+    }
+  
     
     logOut() {
 

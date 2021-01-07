@@ -49,8 +49,12 @@ const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender
 const data = [
   {
     title: 'Title 1',
+    id:'1'
   },
-
+  {
+    title: 'Title 2',
+    id:'2'
+  },
 ];
 const IconText = ({ icon, text }) => (
   <Space>
@@ -127,6 +131,7 @@ class Compaigns extends React.Component {
                         id="tooltip982655500"
                         type="button"
                         style={{ background: "green", border: 0, width: "75%", padding: 10, color: 'white', justifyContent: 'center', textAlign: 'center', fontSize: 14, }}
+                        onClick={this.Startcampaign}
                       >
                         <div>
                           {/* <i className=" ni ni-fat-add" style={{color:"white", fontWeight: -90}}/> */}
@@ -280,7 +285,7 @@ class Compaigns extends React.Component {
                         renderItem={item => (
                           <List.Item>
                             <Card className="card-stats mb-4 mb-xl-0 card">
-                            <span style={{ fontSize: '14px', marginTop: 3 }}>&nbsp;1</span>
+                            <span style={{ fontSize: '14px', marginTop: 3 }}>&nbsp;{item.id}</span>
                             
                              
                               <span style={{ fontSize: '14px', marginTop: -2 ,float:'right'}}>&nbsp;All Subscribers</span>
@@ -347,6 +352,9 @@ class Compaigns extends React.Component {
                           src={require("assets/img/theme/shopify-logo.png")}
                         />
                         <h4>Start a new Campaign!!</h4>
+                        <Row>
+
+<Col lg="24" md="24" sm="24" xl="12">
                         <button
                           className=" btn-icon-clipboard "
                           id="tooltip982655500"
@@ -364,7 +372,8 @@ class Compaigns extends React.Component {
                             <span style={{ color: "white", fontWeight: 'bold' }}>Start Campaign</span>
                           </div>
                         </button>
-
+</Col>
+</Row>
                       </div>
 
                     </TabPane>

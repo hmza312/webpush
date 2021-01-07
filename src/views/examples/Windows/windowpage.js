@@ -20,6 +20,8 @@ export default class Window extends React.Component {
     //   console.log(a)
       this.setState({androidcategory:value});
     console.log(`selected ${value}`);
+    window.$user.window=value
+    console.log('window',window.$user)
     }
 
     render() {

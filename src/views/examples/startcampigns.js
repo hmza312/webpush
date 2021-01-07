@@ -161,12 +161,18 @@ class StartCampaign extends React.Component {
 }
 
 export default StartCampaign;
-
+var entrydate;
+var expirydate;
 function onChange(value, dateString) {
   console.log('Selected Time: ', value);
   console.log('Formatted Selected Time: ', dateString);
+   entrydate=dateString
 }
-
+function onChangeexpiry(value, dateString) {
+  console.log('Selected Time: ', value);
+  console.log('Formatted Selected Time: ', dateString);
+   expirydate=dateString
+}
 function onOk(value) {
   console.log('onOk: ', value);
 }
@@ -198,7 +204,7 @@ class Flash extends React.Component{
       </Space>
       <h5>select Expiry date to Schedule</h5>
       <Space direction="vertical" size={12}>
-        <DatePicker showTime onChange={onChange} onOk={onOk} />
+        <DatePicker showTime onChange={onChangeexpiry} onOk={onOk} />
 
       </Space>
     </div>
@@ -216,55 +222,7 @@ class CampaignDetails extends React.Component {
       toggle: false
     }
   }
-  RadioChanged() {
-    const radio = (
-      <div>
-
-      </div>
-    )
-    ReactDOM.render(radio, document.getElementById('radio'));
-  }
-
-  SnowChanged() {
-    if (category === 'RegularCampaign' && option === 'Schedule') {
-      show = (
-        <div>
-          <h5>select date to Schedule</h5>
-          <Space direction="vertical" size={12}>
-            <DatePicker showTime onChange={onChange} onOk={onOk} />
-
-          </Space>
-        </div>
-      )
-    }
-    else if (category === 'FlashSaleCampaign' && option === 'Schedule') {
-
-      show = (
-        <div>
-          <h5>select date to Schedule</h5>
-          <Space direction="vertical" size={12}>
-            <DatePicker showTime onChange={onChange} onOk={onOk} />
-
-          </Space>
-          <h5>select Expiry date to Schedule</h5>
-          <Space direction="vertical" size={12}>
-            <DatePicker showTime onChange={onChange} onOk={onOk} />
-
-          </Space>
-        </div>
-      )
-    }
-    if (category === 'RegularCampaign' && option === 'sendnow') {
-      show = (
-        <div>
-         
-        </div>
-      )
-    }
-
-    ReactDOM.render(show, document.getElementById('radio'));
-  }
-  onRadioChanged = (e) => {
+   onRadioChanged = (e) => {
     console.log('e.target', e.target.value)
     category = e.target.value;
   
@@ -462,7 +420,7 @@ class CampaignDetails extends React.Component {
     
  
 var data={}
-var title='Enter a Cachy Title';
+var title='Enter a Catchy Title';
 var messagedata='Enter a Optional Message';
 var banner=null;
 var logo="https://previews.123rf.com/images/alekseyvanin/alekseyvanin1705/alekseyvanin170501038/77839919-ringing-bell-icon-vector-alarm-solid-logo-illustration-colorful-pictogram-isolated-on-white.jpg";
@@ -476,7 +434,7 @@ class CampaignNotification extends React.Component {
     this.state = {
       current: 0,
       category: 'Android',
-      title:'Enter a Cachy Title',
+      title:'Enter a Catchy Title',
       message:'Enter a Optional Message',
      url:'',
      count:0,
@@ -633,7 +591,21 @@ handleOk = e => {
     visible: false,
   });
 };
-
+// onsubmit=()=>{
+//   const credentials = {email:"mousuleman@gmail.com", password:"15jan1999"};
+//     await axiosInstance.login(credentials).then(res => {
+//         if(res.status === 200){
+//             localStorage.setItem("userInfo", JSON.stringify(res.data));
+//             console.log("Login Credentials :",res.data);
+        
+//         }
+//         else  {
+         
+//             console.log('Username or Password is incorrect, try again!');
+//         }
+//     });
+//   }
+// }
 handleCancel = e => {
   console.log(e);
   this.setState({
@@ -687,10 +659,10 @@ button2:this.state.button2title}
                           <InputGroup className="input-group-alternative">
                             <InputGroupAddon addonType="prepend">
                               <InputGroupText>
-                                <i className="ni ni-email-83" />
+                                <i className="ni ni-ruler-pencil" />
                               </InputGroupText>
                             </InputGroupAddon>
-                            <Input placeholder="Enter a Cachy Title" type="text" name='title' onChange={(e)=> this.setState({title:e.target.value})}/>
+                            <Input placeholder="Enter a Catchy Title" type="text" name='title' onChange={(e)=> this.setState({title:e.target.value})}/>
                           </InputGroup>
                         </FormGroup>
                         <label>Message </label><label style={{color:'red'}}>*</label>
