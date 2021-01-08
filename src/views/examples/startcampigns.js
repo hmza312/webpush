@@ -434,8 +434,8 @@ class CampaignNotification extends React.Component {
     this.state = {
       current: 0,
       category: 'Android',
-      title:'Enter a Catchy Title',
-      message:'Enter a Optional Message',
+      title:'Notification title here',
+      message:'Notification message here',
      url:'',
      count:0,
      banner:null,
@@ -1020,6 +1020,19 @@ style={{marginTop:10}}
     );
   }
 }
+// async componentDidMount() {
+//   await axiosInstance.getCampaign().then(response => {
+//       this.setState({
+//           products:response.data,
+//           isLoading: false
+//       });
+//       console.log('userProfileProducts: ',response)                           
+//   })
+//   .catch((error) => {
+//     console.error(error);
+//   })
+//   console.log(this.state.products)
+// }
 class Summary extends React.Component {
 
   constructor(props) {
@@ -1077,15 +1090,15 @@ console.log("summary" , this.state.category)
                         <Row>
                         <Col xl='4'>
                         <span className="h5 font-weight-bold mb-0"> Type of Campaign</span><br />
-                        <span style={{ background: 'lightgrey' }} className="h5 font-weight-bold mb-0"> Regular Campaign</span>
+                        <span style={{ background: '#DCDCDC',color:'black' }} className="h5 font-weight-bold mb-0"> Regular Campaign</span>
                         </Col>
                         <Col xl='4'>
                         <span className="h5 font-weight-bold mb-0"> Sending To</span><br />
-                        <span style={{ background: 'lightgrey' }} className="h5 font-weight-bold mb-0"> All Subscriber(Subscriber Count 97)</span>
+                        <span style={{ background: '#DCDCDC' ,color:'black'}} className="h5 font-weight-bold mb-0"> All Subscriber(Subscriber Count 97)</span>
                         </Col>
                         <Col xl='4'>
                         <span className="h5 font-weight-bold mb-0"> Start (Pakistan Standard Time</span><br />
-                        <span style={{ background: 'lightgrey' }} className="h5 font-weight-bold mb-0"> Immediately</span>
+                        <span style={{ background: '#DCDCDC',color:'black' }} className="h5 font-weight-bold mb-0"> Immediately</span>
                         </Col>
                         </Row>
                       </div>
@@ -1292,9 +1305,9 @@ console.log("summary" , this.state.category)
                       <div className="col">
                         <CardTitle
                           tag="h4"
-                          className="text-uppercase text-mutedcard mb-0"
+                          className=" text-mutedcard mb-0"
                         >
-                     Mac
+                     macOS
                             </CardTitle>
 
 

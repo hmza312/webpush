@@ -29,28 +29,28 @@ var routes = [
   {
     path: "/index",
     name: "Home",
-    icon: "ni ni-app text-black",
+    icon: "fas fa-home",
     component: Index,
     layout: "/admin"
   },
   {
     path: "/Campaigns",
     name: "Campaigns",
-    icon: "ni ni-bell-55 text-black",
+    icon: "ni ni-notification-70 text-black",
     component: Compaigns,
     layout: "/admin"
   },
   {
-    path: "/Annotation",
-    name: "Annotation",
-    icon: "ni ni-ruler-pencil text-black",
+    path: "/Automation",
+    name: "Automation",
+    icon: "fas fa-cogs",
     component: Annotation,
     layout: "/admin"
   },
   {
     path: "/Subscribers",
     name: "Subscribers",
-    icon: "ni ni-single-02 text-black",
+    icon: "fas fa-users",
     component: Subscribers,
     layout: "/admin"
   },

@@ -10,7 +10,9 @@ class axiosInstance {
     SendCampaign(credentials) {
         return axios.post(USER_API_BASE_URL + "campaigns/", credentials);
     }
-  
+    getCampaign(credentials) {
+        return axios.get(USER_API_BASE_URL + "campaigns/");
+    }
     
     logOut() {
 

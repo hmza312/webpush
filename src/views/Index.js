@@ -185,6 +185,7 @@ class Index extends React.Component {
               </Card>
             </Col>
           </Row>
+          <br/>
                 </Container>
       </>
     );

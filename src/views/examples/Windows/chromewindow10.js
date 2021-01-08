@@ -171,14 +171,14 @@ render(){
           <span style={{    color: '#fff',
     fontSize: '16px',
     maxHeight: '2.3rem',
-    lineHeight: 1.225,
+    lineHeight: '1.225',
     overflow: 'hidden',
     fontFamily: 'Roboto,sans-serif'}}>{this.props.data.title}</span>      <br />
          
         <span style={{    color: '#aaa',
     fontSize: '16px',
     maxHeight: '4.6rem',
-    lineHeight: 1.225,
+    lineHeight: '1.225',
     overflow: 'hidden',
     fontFamily: 'Roboto,sans-serif'}}>{this.props.data.message}</span><br />
           <span className="h5 font-weight-bold mb-0" style={{color:'lightgrey',fontFamily: 'Roboto,sans-serif',fontWeight:'700',fontSize:'0.625rem'}}>

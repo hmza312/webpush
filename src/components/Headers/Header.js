@@ -71,7 +71,7 @@ class Header extends React.Component {
                            Revenue
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            2,356
+                            2,356 PHP
                           </span>
                         </div>
                         <Col className="col-auto">
@@ -129,7 +129,7 @@ class Header extends React.Component {
                            Campaign Sent
                           </CardTitle>
                           <span className="h2 font-weight-bold mb-0">
-                            49,65%
+                            4965
                           </span>
                         </div>
                         <Col className="col-auto">
