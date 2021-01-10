@@ -144,15 +144,15 @@ class Sidebar extends React.Component {
           </button>
           {/* Brand */}
           {logo ? (
-            <NavbarBrand  {...navbarBrandProps} >
+           
               <img
-                alt={logo.imgAlt}
+              
                 // className="navbar-brand-img"
                 // src={logo.imgSrc}
                src={require('../../assets/img/brand/argon-react.png')}
-               style={{width:'auto',height:'100%'}}
+               style={{width:'100%',height:'auto'}}
               />
-            </NavbarBrand>
+         
           ) : null}
           {/* User */}
           <Nav className="align-items-center d-md-none">
