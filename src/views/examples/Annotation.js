@@ -773,6 +773,20 @@ class Annotation extends React.Component {
 
                         </TabPane>
                         <TabPane tab="Widget" key="2">
+                          <Card className="card-stats mb-4 mb-xl-0 card" >
+                            <CardHeader className=" bg-transparent">
+                              Preview
+                 </CardHeader>
+                            <CardBody  >
+                              <Row>
+                                <Col xl='10'>
+                                  <h5>  Get Notification when a item is back in stock</h5></Col>
+                                <Col xl='1' ><Button type='primary'>Get Alert</Button></Col>
+
+                              </Row>
+                            </CardBody>
+                          </Card>
+                          <br/>
                           <Row>
                             <Col lg="24" xl="12" >
                               <Card className="card-stats mb-4 mb-xl-0 card" >
@@ -807,19 +821,7 @@ class Annotation extends React.Component {
                               </Card>
                             </Col>
                           </Row>
-                          <Card className="card-stats mb-4 mb-xl-0 card" >
-                            <CardHeader className=" bg-transparent">
-                              Preview
-                 </CardHeader>
-                            <CardBody  >
-                              <Row>
-                                <Col xl='10'>
-                                  <h5>  Get Notification when a item is back in stock</h5></Col>
-                                <Col xl='1' ><Button type='primary'>Get Alert</Button></Col>
-
-                              </Row>
-                            </CardBody>
-                          </Card>
+                          
                         </TabPane>
                         <TabPane tab="Reports" key="3">
                           <Card className="shadow">

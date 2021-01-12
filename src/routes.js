@@ -22,6 +22,7 @@ import Optins from "views/examples/Optins.js";
 import Integrations from "views/examples/Integrations.js";
 import Subscribers from "views/examples/Subscribers.js";
 import Compaigns from "views/examples/Compaigns.js";
+import Setting from "views/examples/settings.js";
 import StartCampaign from "views/examples/startcampigns.js";
 if( localStorage !== null 
 ){
@@ -47,6 +48,7 @@ var routes = [
     component: Annotation,
     layout: "/admin"
   },
+ 
   {
     path: "/Subscribers",
     name: "Subscribers",
@@ -68,11 +70,18 @@ var routes = [
     component: Optins,
     layout: "/admin"
   },
+  // {
+  //   path: "/Integrations",
+  //   name: "Integrations",
+  //   icon: "ni ni-settings-gear-65 text-black",
+  //   component: Integrations,
+  //   layout: "/admin"
+  // },
   {
-    path: "/Integrations",
-    name: "Integrations",
+    path: "/Setting",
+    name: "Setting",
     icon: "ni ni-settings-gear-65 text-black",
-    component: Integrations,
+     component: Setting,
     layout: "/admin"
   },
     {
@@ -81,7 +90,8 @@ var routes = [
       icon: "ni ni-circle-08 text-pink",
       component: StartCampaign,
       layout: "/admin"
-    }
+    },
+  
  
 ];
 }
