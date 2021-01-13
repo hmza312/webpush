@@ -51,10 +51,10 @@ class SubscriberHeader extends React.Component {
                         </Col>
                       </Row>
                       <p className="mt-3 mb-0 text-muted text-sm">
-                        <span className="text-success mr-2">
-                          <i className="fa fa-arrow-up" /> 3.48%
+                        <span className="text-warning mr-2">
+                          <i className="fas fa-arrow-up" /> 3.10%
                         </span>{" "}
-                        <span className="text-nowrap">Since last month</span>
+                        <span className="text-nowrap">Since yesterday</span>
                       </p>
                     </CardBody>
                   </Card>

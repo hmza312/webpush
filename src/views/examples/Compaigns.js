@@ -349,7 +349,7 @@ class Compaigns extends React.Component {
                       <div className="cardschulde">
                         <img
                           alt="..."
-                          src={require("assets/img/theme/shopify-logo.png")}
+                          src={require("assets/img/theme/welcoming leopard-01-01.png")}
                         />
                         <h4>Start a new Campaign!!</h4>
                         <Row>

@@ -2,6 +2,9 @@
 import React from "react";
 import { Plus } from 'tabler-icons-react';
 import './optin.css';
+import Collapse from 'react-bootstrap/Collapse'
+import Fade from 'react-bootstrap/Fade'
+import FadeIn from 'react-fade-in'
 // reactstrap components
 import { Button } from 'antd';
 import {
@@ -36,7 +39,7 @@ class Optins extends React.Component {
     super(props)
     this.state = {
       banner: '',
-      category: 'Dialog Box',
+      category: 'Native opt-in',
       title: 'Notification title here',
       message: 'Notification message here',
       allow: 'Allow',
@@ -47,6 +50,7 @@ class Optins extends React.Component {
       later: 'Later',
       check: 'false',
       check:false,
+      open:false,
       desktop:"top-left",
       mobile:'top',
       overlay:"Click on 'Allow' to subscribe to the latest updates.",
@@ -89,6 +93,13 @@ class Optins extends React.Component {
     this.setState({ category: event.target.value });
     console.log(event.target.value)
 
+    this.setState({ open: !this.state.open});
+    console.log('dialog',this.state.open)
+   
+   
+  }
+  open=()=>{
+    
   }
   onChangecheck = (e) => {
     console.log(`checked = ${e.target.checked}`);
@@ -125,24 +136,34 @@ class Optins extends React.Component {
                     <CardBody >
                     <Row>
                                 <Col lg="8" xl="4">
-                                  <input type="radio" id="DialogBox" name="sendnow" value="Dialog Box" checked={this.state.category === "Dialog Box"} onClick={this.handleChange} />
+                                  <input type="radio" id="DialogBox" name="sendnow" value="Dialog Box" checked={this.state.category === "Dialog Box"} onClick={this.handleChange} aria-controls="example-collapse-text"
+        aria-expanded={this.state.open}/>
   &nbsp; &nbsp;<label htmlFor="Desktop">Dialog Box</label></Col>
                                 <Col lg="8" xl="4">
                                   <input type="radio" id="Nativeopt-in" name="sendnow" value="Native opt-in" checked={this.state.category === "Native opt-in"} onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Mobile">Native opt-in </label></Col>
   <Col lg="8" xl="4">
-  <input type="radio" id="FullScreen" name="sendnow" value="Full Screen" checked={this.state.category === "Full Screen"} onChange={this.onoptionChanged} onClick={this.handleChange} />
+  <input type="radio" id="FullScreen" name="sendnow" value="Full Screen" 
+   
+    checked={this.state.category === "Full Screen"} onChange={this.onoptionChanged} onClick={this.handleChange} />
   &nbsp; &nbsp;<label htmlFor="Mobile">Full Screen </label>
                                 </Col>
 
 
                               </Row>
+                              <div style={{backgroundColor:'lightgrey',padding:'10px',borderTopLeftRadius:'4px',borderTopRightRadius:'4px'}}>
+                              <img src={require('../../assets/img/dry-clean (3).png')} width='20px' height='20px'/>&nbsp;&nbsp;
+                              <img src={require('../../assets/img/dry-clean (1).png')} width='20px' height='20px'/>&nbsp;&nbsp;
+                              <img src={require('../../assets/img/dry-clean (2).png')} width='20px' height='20px'/>
+                              </div>
+                             
                               {this.state.category === 'Dialog Box' ?
 <Row>
   <Col xl='3'>
 
   </Col>
-  <Col xl='5'><Card className="card-stats mb-4 mb-xl-0 expandable " >
+  <Col xl='5'>
+  <FadeIn delay={50} transitionDuration={3000}><Card className="card-stats mb-4 mb-xl-0 expandable " >
   <CardBody>
     <Row>
 
@@ -251,12 +272,13 @@ class Optins extends React.Component {
      
   </CardBody>
 </Card>
-
+</FadeIn>
 </Col>
   <Col xl='4'></Col>
 </Row>
 :
 this.state.category === 'Native opt-in'  ?
+<FadeIn delay={50} transitionDuration={3000}>
 <div >
   {this.state.check===false?
   <div style={{position:'relative'}}>
@@ -296,8 +318,10 @@ this.state.category === 'Native opt-in'  ?
 </div>
   }
 </div>
+</FadeIn>
 :
 this.state.category === 'Full Screen' ?
+<FadeIn delay={50} transitionDuration={18000}>
 <div className="background">
     
 
@@ -407,6 +431,7 @@ alignContent:'center',
       <br/>
 
         </div>
+        </FadeIn>
 :
 <div></div>
 }
