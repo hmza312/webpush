@@ -38,6 +38,20 @@ import {
 } from "reactstrap";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 class AdminNavbar extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      data:[],
+      loading:true
+    }
+  }
+  componentDidMount(){
+    this.setState({
+      data:localStorage.getItem('userInfo').user,
+      isLoading: false
+  });
+  console.log('data',this.state.data)
+  }
   async handleLogout() {
     try {
         const response= await axiosInstance.logOut()
@@ -71,8 +85,54 @@ class AdminNavbar extends React.Component {
                             <i className=" ni ni-notification-70" />
                            
                           </div>
-              <UncontrolledDropdown nav>
-                <DropdownToggle className="pr-0" nav>
+              
+                
+             {localStorage.getItem('userInfo')===null?
+             <UncontrolledDropdown nav>
+             <DropdownToggle className="pr-0" nav>
+             <Media className="align-items-center">
+               <span className="avatar avatar-sm rounded-circle">
+                 <img
+                   alt="..."
+                   src={require("assets/img/theme/team-4-800x800.jpg")}
+                 />
+               </span>
+               <Media className="ml-2 d-none d-lg-block">
+                 <span className="mb-0 text-sm font-weight-bold" style={{color:'black'}}>
+                   Hamza
+                 </span>
+               </Media>
+             </Media>
+           </DropdownToggle>
+                <DropdownMenu className="dropdown-menu-arrow" right>
+                <DropdownItem className="noti-title" header tag="div">
+                  <h5 className="text-overflow m-0">Hamza</h5>
+                  <h5 className="text-overflow m-0">Basic</h5>
+                  <h5 className="text-overflow m-0">Impression (7/900 used)!</h5>
+                  <Progress percent={30}  size="small" />
+
+                  <h5 className="text-overflow m-0">Impressions resets at Jan 1,2021,6 am</h5>
+                </DropdownItem>
+                <DropdownItem to="/admin/user-profile" tag={Link}>
+                  <i className="ni ni-single-02" />
+                  <span>Setting</span>
+                </DropdownItem>
+                <DropdownItem to="/admin/user-profile" tag={Link}>
+                  <i className="ni ni-settings-gear-65" />
+                  <span>Plan and Pricing</span>
+                </DropdownItem>
+                <DropdownItem to="/admin/user-profile" tag={Link}>
+                  <i className="ni ni-calendar-grid-58" />
+                  <span>Documentation</span>
+                </DropdownItem>
+                <DropdownItem to="#" tag={Link} onClick={this.logout}>
+                  <i className="ni ni-calendar-grid-58" />
+                  <span>Logout</span>
+                </DropdownItem>
+              </DropdownMenu></UncontrolledDropdown>
+           :
+           <UncontrolledDropdown nav>
+           <DropdownToggle className="pr-0" nav>
                   <Media className="align-items-center">
                     <span className="avatar avatar-sm rounded-circle">
                       <img
@@ -82,39 +142,41 @@ class AdminNavbar extends React.Component {
                     </span>
                     <Media className="ml-2 d-none d-lg-block">
                       <span className="mb-0 text-sm font-weight-bold" style={{color:'black'}}>
-                        Hamza
+                    { JSON.parse( localStorage.getItem('first'))}
                       </span>
                     </Media>
                   </Media>
                 </DropdownToggle>
-             
-                <DropdownMenu className="dropdown-menu-arrow" right>
-                  <DropdownItem className="noti-title" header tag="div">
-                    <h5 className="text-overflow m-0">Hamza</h5>
-                    <h5 className="text-overflow m-0">Basic</h5>
-                    <h5 className="text-overflow m-0">Impression (7/900 used)!</h5>
-                    <Progress percent={30}  size="small" />
+           <DropdownMenu className="dropdown-menu-arrow" right>
+           <DropdownItem className="noti-title" header tag="div">
+                <h5 className="text-overflow m-0">{  JSON.parse(localStorage.getItem('first'))}{' '}{  JSON.parse(localStorage.getItem('last'))}</h5>
+             <h5 className="text-overflow m-0">Basic</h5>
+             <h5 className="text-overflow m-0">Impression (7/900 used)!</h5>
+             <Progress percent={30}  size="small" />
 
-                    <h5 className="text-overflow m-0">Impressions resets at Jan 1,2021,6 am</h5>
-                  </DropdownItem>
-                  <DropdownItem to="/admin/user-profile" tag={Link}>
-                    <i className="ni ni-single-02" />
-                    <span>Setting</span>
-                  </DropdownItem>
-                  <DropdownItem to="/admin/user-profile" tag={Link}>
-                    <i className="ni ni-settings-gear-65" />
-                    <span>Plan and Pricing</span>
-                  </DropdownItem>
-                  <DropdownItem to="/admin/user-profile" tag={Link}>
-                    <i className="ni ni-calendar-grid-58" />
-                    <span>Documentation</span>
-                  </DropdownItem>
-                  <DropdownItem to="#" tag={Link} onClick={this.logout}>
-                    <i className="ni ni-calendar-grid-58" />
-                    <span>Logout</span>
-                  </DropdownItem>
-                </DropdownMenu>
+             <h5 className="text-overflow m-0">Impressions resets at Jan 1,2021,6 am</h5>
+           </DropdownItem>
+           <DropdownItem to="/admin/user-profile" tag={Link}>
+             <i className="ni ni-single-02" />
+             <span>Setting</span>
+           </DropdownItem>
+           <DropdownItem to="/admin/user-profile" tag={Link}>
+             <i className="ni ni-settings-gear-65" />
+             <span>Plan and Pricing</span>
+           </DropdownItem>
+           <DropdownItem to="/admin/user-profile" tag={Link}>
+             <i className="ni ni-calendar-grid-58" />
+             <span>Documentation</span>
+           </DropdownItem>
+           <DropdownItem to="#" tag={Link} onClick={this.logout}>
+             <i className="ni ni-calendar-grid-58" />
+             <span>Logout</span>
+           </DropdownItem>
+         </DropdownMenu>
+     
+            
               </UncontrolledDropdown>
+  }
             </Nav>
           </Container>
         </Navbar>

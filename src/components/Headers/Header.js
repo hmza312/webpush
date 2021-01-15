@@ -19,8 +19,81 @@ import React from "react";
 
 // reactstrap components
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
-
+import axiosInstance from '../../Apis/axiosapi'
 class Header extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      impression:{},
+      subscriber:{},
+      revenue:{},
+      campaign:{}
+    }
+  }
+  async componentDidMount(){
+    const credentials = {email:"hamzaiftikharpcs@gmail.com", password:"ham31298"};
+    await axiosInstance.login(credentials).then(res => {
+        if(res.status === 200){
+            localStorage.setItem("userInfo", JSON.stringify(res.data));
+            localStorage.setItem('first',JSON.stringify(res.data.user.first_name))
+            localStorage.setItem('last',JSON.stringify(res.data.user.last_name))
+            localStorage.setItem('key',JSON.stringify(res.data.key))
+            console.log("Login Credentials :",res.data);
+            console.log('key',localStorage.getItem('key'))
+        
+        }
+        else  {
+         
+            console.log('Username or Password is incorrect, try again!');
+        }
+    });
+    setTimeout(async() => {  await axiosInstance.get_active_subscriber_stats().then(res => {
+      if(res.status === 200){
+    
+          console.log("Subscriber :",res.data);
+          this.setState({subscriber:res.data})
+      }
+      else  {
+       
+          console.log('Incorrect Values, try again!');
+      }
+  }); }, 15000);
+ 
+   
+  await axiosInstance.get_campaigns_stats().then(res => {
+    if(res.status === 200){
+  
+        console.log("Campaign :",res.data);
+        this.setState({campaign:res.data})
+    }
+    else  {
+     
+        console.log('Incorrect Values, try again!');
+    }
+});
+await axiosInstance.get_impression_stats().then(res => {
+  if(res.status === 200){
+
+      console.log("Impression :",res.data);
+      this.setState({impression:res.data})
+  }
+  else  {
+   
+      console.log('Incorrect Values, try again!');
+  }
+});
+await axiosInstance.get_revenue_stats().then(res => {
+  if(res.status === 200){
+
+      console.log("Revenue :",res.data);
+      this.setState({revenue:res.data})
+  }
+  else  {
+   
+      console.log('Incorrect Values, try again!');
+  }
+});
+  }
   render() {
     return (
       <>

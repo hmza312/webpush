@@ -16,7 +16,7 @@ import {
   Row,
   Col
 } from "reactstrap";
-
+import axiosInstance from '../../Apis/axiosapi'
 import SubscriberHeader from "components/Headers/Subscriberheader.js";
 import classnames from "classnames";
 // javascipt plugin for creating charts
@@ -36,7 +36,8 @@ class Subscribers extends React.Component {
     super(props);
     this.state = {
       activeNav: 1,
-      chartExample1Data: "data1"
+      chartExample1Data: "data1",
+      countries:[]
     };
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
@@ -50,7 +51,10 @@ class Subscribers extends React.Component {
         this.state.chartExample1Data === "data1" ? "data2" : "data1"
     });
   };  
-  
+  async componentDidMount(){
+      
+
+  }
   render() {
     return (
       <>

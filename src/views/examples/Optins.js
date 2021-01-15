@@ -321,7 +321,7 @@ this.state.category === 'Native opt-in'  ?
 </FadeIn>
 :
 this.state.category === 'Full Screen' ?
-<FadeIn delay={50} transitionDuration={18000}>
+<FadeIn delay={50} transitionDuration={15000}>
 <div className="background">
     
 

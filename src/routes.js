@@ -24,6 +24,7 @@ import Subscribers from "views/examples/Subscribers.js";
 import Compaigns from "views/examples/Compaigns.js";
 import Setting from "views/examples/settings.js";
 import StartCampaign from "views/examples/startcampigns.js";
+import CreateSegment from "views/examples/createsegement.js";
 if( localStorage !== null 
 ){
 var routes = [
@@ -82,6 +83,13 @@ var routes = [
     name: "Setting",
     icon: "ni ni-settings-gear-65 text-black",
      component: Setting,
+    layout: "/admin"
+  },
+  {
+    path: "/CreateSegment",
+    name: "Create Segment",
+    icon: "ni ni-settings-gear-65 text-black",
+     component: CreateSegment,
     layout: "/admin"
   },
     {

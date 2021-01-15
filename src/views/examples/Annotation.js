@@ -49,7 +49,7 @@ import Android from './Android/AndroidPage'
 import Mac from './Mac/macpage'
 import Window from './Windows/windowpage'
 import { Select } from 'antd';
-
+import axiosInstance from '../../Apis/axiosapi'
 const { Option } = Select;
 const { TabPane } = Tabs;
 const { Meta } = Card;
@@ -82,9 +82,70 @@ class Annotation extends React.Component {
       category: 'Android',
       title: 'Welcome Notification',
       description: ' A Notification is sent to the subscriber as soon as they subscribe to your store notification'
-
-
+,
+      welcome:[],
+      back:[],
+      price:[],
+      cart:[],
+      shipping:[]
     }
+  }
+  async componentDidMount(){
+await axiosInstance.WelcomeNotification().then(res => {
+  if(res.status === 200){
+
+      console.log("Welcome :",res.data);
+      this.setState({welcome:res.data})
+  }
+  else  {
+   
+      console.log('Incorrect Values, try again!');
+  }
+});
+await axiosInstance.BackInStock().then(res => {
+  if(res.status === 200){
+
+      console.log("BackinStock :",res.data);
+      this.setState({back:res.data})
+  }
+  else  {
+   
+      console.log('Incorrect Values, try again!');
+  }
+});
+await axiosInstance.shipping().then(res => {
+  if(res.status === 200){
+
+      console.log("shipping :",res.data);
+      this.setState({shipping:res.data})
+  }
+  else  {
+   
+      console.log('Incorrect Values, try again!');
+  }
+});
+await axiosInstance.AbandonedCart().then(res => {
+  if(res.status === 200){
+
+      console.log("cart :",res.data);
+      this.setState({cart:res.data})
+  }
+  else  {
+   
+      console.log('Incorrect Values, try again!');
+  }
+});
+await axiosInstance.PriceDrop().then(res => {
+  if(res.status === 200){
+
+      console.log("Price :",res.data);
+      this.setState({price:res.data})
+  }
+  else  {
+   
+      console.log('Incorrect Values, try again!');
+  }
+});
   }
   onChange = (checked) => {
     console.log(`switch to ${checked}`);

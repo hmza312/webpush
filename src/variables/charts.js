@@ -361,7 +361,18 @@ let chartExample1 = {
     };
   }
 };
+// await axiosInstance.sales_graph().then(res => {
+//   if(res.status === 200){
 
+//       console.log("Sales :",res.data);
+//       this.setState({graph:res.data})
+//   }
+//   else  {
+   
+//       console.log('Incorrect Values, try again!');
+//   }
+// });
+//   }
 // Example 2 of Chart inside src/views/Index.js (Total orders - Card)
 let chartExample2 = {
   options: {

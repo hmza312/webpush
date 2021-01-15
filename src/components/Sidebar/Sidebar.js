@@ -89,9 +89,18 @@ class Sidebar extends React.Component {
       return (
         
         <NavItem key={key}>
-        {prop.name==='Start Campaign'
+        {prop.name==='Start Campaign' 
       ?
       <NavLink
+     
+    >
+      {/* <i className={prop.icon} />
+      {prop.name} */}
+    </NavLink>
+    :
+    prop.name==='Create Segment' 
+    ?
+    <NavLink
      
     >
       {/* <i className={prop.icon} />

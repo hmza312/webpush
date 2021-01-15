@@ -15,6 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
+
 import React from "react";
 // node.js library that concatenates classes (strings)
 import classnames from "classnames";
@@ -54,7 +55,9 @@ class Index extends React.Component {
     super(props);
     this.state = {
       activeNav: 1,
-      chartExample1Data: "data1"
+      chartExample1Data: "data1",
+      countries:[],
+graph:{}
     };
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
@@ -69,19 +72,20 @@ class Index extends React.Component {
     });
   };
   async componentDidMount(){
-      
-    const credentials = {email:"mousuleman@gmail.com", password:"15jan1999"};
-    await axiosInstance.login(credentials).then(res => {
-        if(res.status === 200){
-            localStorage.setItem("userInfo", JSON.stringify(res.data));
-            console.log("Login Credentials :",res.data);
-        
-        }
-        else  {
-         
-            console.log('Username or Password is incorrect, try again!');
-        }
-    });
+  
+   
+  await axiosInstance.get_top_location_stats().then(res => {
+    if(res.status === 200){
+  
+        console.log("Location :",res.data);
+        this.setState({countries:res.data})
+    }
+    else  {
+     
+        console.log('Incorrect Values, try again!');
+    }
+    
+});
   }
   render() {
     return (

@@ -19,8 +19,29 @@ import React from "react";
 
 // reactstrap components
 import { Card, CardBody, CardTitle, CardHeader,Container, Row, Col ,Nav,NavItem,NavLink,Navbar} from "reactstrap";
-
+import axiosInstance from '../../Apis/axiosapi'
 class SubscriberHeader extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={
+      impression:{},
+      subscriber:{},
+      revenue:{},
+      campaign:{}
+    }
+  }
+  async componentDidMount(){
+    await axiosInstance.get_active_subscriber_stats().then(res => {
+      if(res.status === 200){
+    
+          console.log("Login Credentials :",res.data);
+          this.setState({subscriber:res.data})
+      }
+      else  {
+       
+          console.log('Username or Password is incorrect, try again!');
+      }
+  });}
   render() {
     return (
       <>
